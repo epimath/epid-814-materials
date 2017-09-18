@@ -1,0 +1,36 @@
+---
+title: "Epid 814 - Advanced Modeling Methods"
+author: "Instructor: Marisa Eisenberg"
+output: html_document
+---
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 16px;
+  }
+  </style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Course Materials 
+
+Organized by type:
+
+* [Readings](https://github.com/epimath/epid-814-materials/tree/master/Readings)
+
+* [Lectures](dfds)
+
+* [Labs](sdfs)
+
+
+## Course schedule
+
+1. Compartmental Models and DAGs - [Discussion paper](https://www.degruyter.com/view/j/em.ahead-of-print/em-2016-0007/em-2016-0007.xml)
+
+2. Introduction to Parameter Estimation and Maximum Likelihood - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/ParameterEstimationML.pdf)
+
+3. Coding Session - [Lab Assignment](https://epimath.github.io/epid-814-materials/Labs/)
+
+
