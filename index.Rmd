@@ -20,9 +20,9 @@ Organized by type:
 
 * [Readings](https://github.com/epimath/epid-814-materials/tree/master/Readings)
 
-* [Lectures](dfds)
+* [Lectures](https://epimath.github.io/epid-814-materials/Lectures/)
 
-* [Labs](sdfs)
+* [Labs](https://epimath.github.io/epid-814-materials/Labs/)
 
 
 ## Course schedule
@@ -31,6 +31,6 @@ Organized by type:
 
 2. Introduction to Parameter Estimation and Maximum Likelihood - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/ParameterEstimationML.pdf)
 
-3. Coding Session - [Lab Assignment](https://epimath.github.io/epid-814-materials/Labs/)
+3. Parameter Estimation Coding Session - [Lab Assignment](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/)
 
 
