@@ -1,6 +1,7 @@
 
 ## Labs and Code for Epid 814
 
+Labs
 - [Parameter Estimation Lab](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/)
 
 Additional Useful links
