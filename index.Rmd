@@ -45,30 +45,32 @@ Topics are subject to change and rearrangement!
 
 <br>
 
-##### 3. Uncertainty and Identifiability
+##### <span style="color:#AAAAAA;"> 3. Uncertainty and Identifiability </span>
 
 <br>
 
-##### 4. Stochastic processes and stochastic modeling methods
+##### <span style="color:#AAAAAA;"> 4. Stochastic processes and stochastic modeling methods </span>
 
 <br>
 
-##### 5. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's)
+##### <span style="color:#AAAAAA;"> 5. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's) </span>
 
 <br>
 
-##### 6. MCMC & Bayesian approaches
+##### <span style="color:#AAAAAA;"> 6. MCMC & Bayesian approaches </span>
 
 <br>
 
-##### 7. Data scraping, visualization, and general wrangling (e.g. twitter scraping, ggplot)
+##### <span style="color:#AAAAAA;"> 7. Data scraping, visualization, and general wrangling (e.g. twitter scraping, ggplot) </span>
 
 <br>
 
-##### 8. Additional Topics
-- Spatial modeling & spatial stats
+##### <span style="color:#AAAAAA;"> 8. Additional Topics </span>
 
-- Network models - particularly integrating statistics with network models and data
+- <span style="color:#AAAAAA;">Spatial modeling & spatial stats </span>
 
-- Working with sequencing data
+- <span style="color:#AAAAAA;">Network models - particularly integrating statistics with network models and data </span>
+
+- <span style="color:#AAAAAA;">Working with sequencing data </span>
+
 
