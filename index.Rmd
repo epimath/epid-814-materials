@@ -24,13 +24,51 @@ Organized by type:
 
 * [Labs](https://epimath.github.io/epid-814-materials/Labs/)
 
+<hr>
 
 ## Course schedule
+Topics are subject to change and rearrangement!
 
-1. Compartmental Models and DAGs - [Discussion paper](https://www.degruyter.com/view/j/em.ahead-of-print/em-2016-0007/em-2016-0007.xml)
+<br>
 
-2. Introduction to Parameter Estimation and Maximum Likelihood - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/ParameterEstimationML.pdf)
+##### 1. Compartmental Models and DAGs
 
-3. Parameter Estimation Coding Session - [Lab Assignment](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/)
+- Compartmental Models and DAGs - [Discussion paper](https://www.degruyter.com/view/j/em.ahead-of-print/em-2016-0007/em-2016-0007.xml)
 
+<br>
+
+##### 2. Parameter Estimation and Maximum Likelihood
+
+- Introduction to Parameter Estimation and Maximum Likelihood - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/ParameterEstimationML.pdf)
+
+- Parameter Estimation Coding Session - [Lab Assignment](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/)
+
+<br>
+
+##### 3. Uncertainty and Identifiability
+
+<br>
+
+##### 4. Stochastic processes and stochastic modeling methods
+
+<br>
+
+##### 5. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's)
+
+<br>
+
+##### 6. MCMC & Bayesian approaches
+
+<br>
+
+##### 7. Data scraping, visualization, and general wrangling (e.g. twitter scraping, ggplot)
+
+<br>
+
+##### 8. Additional Topics
+- Spatial modeling & spatial stats
+
+- Network models - particularly integrating statistics with network models and data
+
+- Working with sequencing data
 
