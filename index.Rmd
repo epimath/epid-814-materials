@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Organized by type:
 
-* [Readings](https://github.com/epimath/epid-814-materials/tree/master/Readings)
+* [Readings](https://epimath.github.io/epid-814-materials/Readings/)
 
 * [Lectures](https://epimath.github.io/epid-814-materials/Lectures/)
 
@@ -45,7 +45,9 @@ Topics are subject to change and rearrangement!
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 3. Uncertainty and Identifiability </span>
+##### 3. Uncertainty and Identifiability
+
+- Identifiability and Parameter Uncertainty - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/IdentifiabilityUncertainty.pdf)
 
 <br>
 
