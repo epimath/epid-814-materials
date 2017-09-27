@@ -4,6 +4,8 @@
 **Labs**
 - [Parameter Estimation Lab](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/)
 
+- [Identifiability and Uncertainty Lab](https://epimath.github.io/epid-814-materials/Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)
+
 **Ongoing Examples**
 - [Case Study: Cholera in Yemen](https://epimath.github.io/epid-814-materials/Labs/CholeraYemenCaseStudy/)
 
