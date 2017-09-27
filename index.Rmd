@@ -51,6 +51,8 @@ Topics are subject to change and rearrangement!
 
 - Identifiability and Parameter Uncertainty - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/IdentifiabilityUncertainty.pdf)
 
+- [Identifiability and Uncertainty Lab](https://epimath.github.io/epid-814-materials/Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)
+
 <br>
 
 ##### <span style="color:#AAAAAA;"> 4. Stochastic processes and stochastic modeling methods </span>
