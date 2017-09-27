@@ -43,6 +43,8 @@ Topics are subject to change and rearrangement!
 
 - Parameter Estimation Coding Session - [Lab Assignment](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/)
 
+- Extra mini-lecture by special request - [Separation and Firth's Penalized Likelihood](https://epimath.github.io/epid-814-materials/Lectures/FirthsPenalizedLikelihood.pdf)
+
 <br>
 
 ##### 3. Uncertainty and Identifiability
