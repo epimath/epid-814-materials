@@ -50,7 +50,7 @@ ProfLike = function(params,profindex,costfun,times,data,perrange=0.5,numpoints=1
       flagtemp = res$convergence
       currfvals = c(currfvals,fvaltemp)
       currflags = c(currflags, flagtemp)
-      currparams = rbind(currparams, append(res$par,profrange[j,i],after=profindex-1));  #recording the  full set of params (even though it includes the profparam), to make it easier to just run the model with the profile output after ProfLike is done (i.e. you don't have to recombine the profiled param with the rest to run the model)
+      currparams = rbind(currparams, append(res$par,profrange[j,i],after=profindex-1))  #recording the  full set of params (even though it includes the profparam), to make it easier to just run the model with the profile output after ProfLike is done (i.e. you don't have to recombine the profiled param with the rest to run the model)
     }
   }
   
