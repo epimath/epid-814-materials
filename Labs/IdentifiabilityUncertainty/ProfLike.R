@@ -29,9 +29,10 @@ ProfLike = function(params,profindex,costfun,times,data,perrange=0.5,numpoints=1
   profrangeUp = seq(params[profindex],params[profindex]*(1+perrange),length.out = numpoints)
   profrange = cbind(profrangeDown, profrangeUp)
 
-  currfvals = c() #probably bad practice to grow these from an empty array but meh
-  currparams = c()
-  currflags = c()
+  #Make holders for all the cost function values, params, and convergence flags
+  currfvals = numeric(2*numpoints)
+  currparams = matrix(NA,2*numpoints,length(params))
+  currflags = numeric(2*numpoints)
   
   # Make a little wrapper around costfun so that it's only fitting the non-profiled parameters
   fixcostfun = function(shortparams,profparam,profindex,times,data,costfun){
@@ -46,11 +47,9 @@ ProfLike = function(params,profindex,costfun,times,data,perrange=0.5,numpoints=1
       print(c(i,j)) # track progress
       res = optim(shortparams,fn=fixcostfun,profparam=profrange[j,i],profindex=profindex,times=times,data=data,costfun=costfun,method='Nelder-Mead')
       shortparams = res$par #save current fitted params as starting values for next round
-      fvaltemp = res$value
-      flagtemp = res$convergence
-      currfvals = c(currfvals,fvaltemp)
-      currflags = c(currflags, flagtemp)
-      currparams = rbind(currparams, append(res$par,profrange[j,i],after=profindex-1))  #recording the  full set of params (even though it includes the profparam), to make it easier to just run the model with the profile output after ProfLike is done (i.e. you don't have to recombine the profiled param with the rest to run the model)
+      currfvals[j+numpoints*(i-1)] = res$value
+      currflags[j+numpoints*(i-1)] = res$convergence
+      currparams[j+numpoints*(i-1),] = append(res$par,profrange[j,i],after=profindex-1)  #recording the  full set of params (even though it includes the profparam), to make it easier to just run the model with the profile output after ProfLike is done (i.e. you don't have to recombine the profiled param with the rest to run the model)
     }
   }
   
