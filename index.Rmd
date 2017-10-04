@@ -55,23 +55,35 @@ Topics are subject to change and rearrangement!
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 4. Stochastic processes and stochastic modeling methods </span>
+##### 4. Visualization with ggplot2
+
+- [Lab - our collection of ggplot examples](https://epimath.github.io/epid-814-materials/Labs/ggplotExamples/)
+
+- [Nice, comprehensive ggplot tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
+
+- [Another tutorial](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/), and an [introductory course](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) on datacamp
+
+- [Mapping with ggplot](http://zevross.com/blog/2014/07/16/mapping-in-r-using-the-ggplot2-package/)
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 5. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's) </span>
+##### <span style="color:#AAAAAA;"> 5. MCMC & Bayesian approaches </span>
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 6. MCMC & Bayesian approaches </span>
+##### <span style="color:#AAAAAA;"> 6. Stochastic processes and stochastic modeling methods </span>
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 7. Data scraping, visualization, and general wrangling (e.g. twitter scraping, ggplot) </span>
+##### <span style="color:#AAAAAA;"> 7. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's) </span>
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 8. Additional Topics </span>
+##### <span style="color:#AAAAAA;"> 8. Data scraping and general wrangling (e.g. twitter scraping) </span>
+
+<br>
+
+##### <span style="color:#AAAAAA;"> 9. Additional Topics </span>
 
 - <span style="color:#AAAAAA;">Spatial modeling & spatial stats </span>
 
