@@ -6,6 +6,8 @@
 
 - [Identifiability and Uncertainty Lab](https://epimath.github.io/epid-814-materials/Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)
 
+- [ggplot Examples Day!](https://epimath.github.io/epid-814-materials/Labs/ggplotExamples/)
+
 **Ongoing Examples**
 - [Case Study: Cholera in Yemen](https://epimath.github.io/epid-814-materials/Labs/CholeraYemenCaseStudy/)
 
