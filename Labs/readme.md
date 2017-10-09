@@ -8,6 +8,8 @@
 
 - [ggplot Examples Day!](https://epimath.github.io/epid-814-materials/Labs/ggplotExamples/)
 
+- [Metropolis Sampler](https://epimath.github.io/epid-814-materials/Labs/MetropolisSampler/MetropolisSampler.html)
+
 **Ongoing Examples**
 - [Case Study: Cholera in Yemen](https://epimath.github.io/epid-814-materials/Labs/CholeraYemenCaseStudy/)
 
