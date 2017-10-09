@@ -67,11 +67,22 @@ Topics are subject to change and rearrangement!
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 5. MCMC & Bayesian approaches </span>
+##### 5. MCMC & Bayesian approaches
+
+- [Lecture - Bayesian Approaches to Parameter Estimation](https://epimath.github.io/epid-814-materials/Lectures/BayesianEstimation.pdf)
+
+- [Lab - Metropolis Sampler](https://epimath.github.io/epid-814-materials/Labs/MetropolisSampler/MetropolisSampler.html)
 
 <br>
 
 ##### <span style="color:#AAAAAA;"> 6. Stochastic processes and stochastic modeling methods </span>
+
+<span style="color:#AAAAAA;">Maybe include</span>
+
+- <span style="color:#AAAAAA;"> LHS sampling (Rachel?)</span>
+
+- <span style="color:#AAAAAA;"> Gillespie & Tau-leaping (Alicia?)</span>
+
 
 <br>
 
