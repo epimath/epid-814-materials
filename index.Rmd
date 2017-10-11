@@ -75,7 +75,17 @@ Topics are subject to change and rearrangement!
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 6. Stochastic processes and stochastic modeling methods </span>
+##### 6. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's)
+
+- Andrew?
+
+<br> 
+
+##### <span style="color:#AAAAAA;"> 5.5 A little more Bayesian stuff (see Section 5 for files) </span>
+
+<br>
+
+##### <span style="color:#AAAAAA;"> 7. Stochastic processes and stochastic modeling methods </span>
 
 <span style="color:#AAAAAA;">Maybe include</span>
 
@@ -86,9 +96,6 @@ Topics are subject to change and rearrangement!
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 7. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's) </span>
-
-<br>
 
 ##### <span style="color:#AAAAAA;"> 8. Data scraping and general wrangling (e.g. twitter scraping) </span>
 
