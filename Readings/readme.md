@@ -18,3 +18,6 @@
 	+ [Also this one](https://nicercode.github.io/guides/mcmc/)
 
 	+ [Overview of conjugate priors](http://lesswrong.com/lw/5sn/the_joys_of_conjugate_priors/)
+
+- Andrew's overview of thinking about linear algebra, the next generation matrix, and R0
+	+ [A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Readings/LinearAlgebraicApproachtoR0.pdf)]

@@ -77,7 +77,9 @@ Topics are subject to change and rearrangement!
 
 ##### 6. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's)
 
-- Andrew?
+- [Lecture - Understanding the Basic Reproduction Number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Lectures/Understanding_the_Basic_Reproduction_Number.pdf)
+
+- [Reading - A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Readings/LinearAlgebraicApproachtoR0.pdf)
 
 <br> 
 
