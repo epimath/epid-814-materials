@@ -1,0 +1,208 @@
+---
+title: "Bayesian estimation with simple disease models"
+author: "Marisa Eisenberg"
+date: "10/22/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### BayesianTools Package
+For today's lab, we'll use the `BayesianTools` package, which has a bunch of different methods built in.
+```{r, load packages}
+set.seed(7)
+library(BayesianTools)
+library(deSolve)
+library(ggplot2)
+```
+
+### Methods Overview
+Methods marked in italics are included in the `BayesianTools` package, but I've included a couple of other ones for us to talk over since they're in commonly used packages like `Stan` or `POMP`.
+
+- *Metropolis-Hastings*
+- *Gibbs sampling*
+- Variations of the above:
+    + *Prior optimization*
+    + *Adaptive methods*
+    + *Delayed rejection*
+    + *DRAM* (Delayed Rejection Adaptive Metropolis-Hastings)
+- *Differential evolution*
+- Hamiltonian methods (Stan)
+- Particle filtering (in particular, Iterated Filtering in POMP)
+
+
+### Intro to the BayesianTools Package
+As a simple example to get to know the `BayesianTools` package, let's set up a similar normal distribution model to the one we built last time. We'll suppose the data comes from a normal distribution with unknown $\mu$, and known $\sigma = 30$. 
+
+Let's simulate some basic data to run our example:
+```{r normdata}
+data = rnorm(50,0,30) # here we're supposing the true mean is zero, and sampling 55 data points
+```
+
+The likelihood is just a normal distribution evaluated for our data set and whatever value of $\mu$ we're considering using:
+
+```{r normlike}
+loglike = function(par){
+  sum(dnorm(data, par, 30, log = T))
+}
+```
+
+Now, we create a BayesianSetup---this is an object that has the prior and likelihood information that `BayesianTools` needs. 
+
+We can set a prior using a distribution, or if we want to assume a uniform distribution with a given range, we can just provide the upper and lower limits. Note that if we don't specify a prior, `BayesianTools` will use an infinite uniform prior (basically equivalent to just using the likelihood). 
+
+We'll also set the total number of iterations to run. We can set the starting values for the parameters, but if we don't, `BayesianTools` will default to sampling them from the prior, which is often a good idea anyhow.
+
+```{r normbtsetup}
+setup = createBayesianSetup(likelihood = loglike, lower = -20, upper = 20)
+settings = list(iterations = 10000, message=F)
+```
+
+Now, let's run the MCMC! We'll use the default algorithm for now (a form of differential evolution). Let's also spit out some summary statistics and plots.
+```{r normbtrun}
+res = runMCMC(bayesianSetup = setup, settings = settings)
+summary(res)
+marginalPlot(res)
+plot(res)
+```
+
+<br>
+
+### Disease model with multiple parameters
+Now, let's expand this a bit and try a disease model with multiple parameters. 
+
+First, let's set up the model, initial conditions, and generate some data to use for fitting. We'll use an SI model, supposing a population of $N = 10000$ individuals:
+\[\begin{aligned}
+\dot{S} &= - \beta SI + \gamma I\\
+\dot{I} &= \beta SI - \gamma I \\
+y &= \kappa N I \end{aligned} \]
+We'll take our unknown parameters to be $\beta, \gamma$, and $\kappa$. To simulate data, we'll suppose the data comes from a normal distribution with mean $y$ and variance $20\%$ of $y$.
+
+```{r SImodelsetup}
+#### SI model ####
+SIode = function(t, x, params){
+  S = x[1]
+  I = x[2]
+  
+  b = params[1]
+  g = params[2]
+  
+  dS = -b*S*I + g*I
+  dI = b*S*I - g*I
+  
+  list(c(dS, dI))
+}
+
+#### Measurement equation ####
+yfun = function(x,params){x[,3]*10000*params[3]}
+
+#### Simulate data ####
+times = seq(0,100,1)
+trueparams = c(0.25,0.1,0.15)
+xsimdata = ode(c(0.99,0.01), times, SIode, trueparams, method='ode45')
+data = rnorm(length(times),yfun(xsimdata,trueparams),0.2*yfun(xsimdata,trueparams))
+plot(times,data)
+```
+
+Now, we can make the likelihood function, which is the same normal distribution setup we used to generate the data, but now viewed as a function of the parameters with the data fixed.
+
+```{r SIlike}
+loglike = function(par){
+  xtemp = ode(c(0.99,0.01), times, SIode, par, method='ode45')
+  return(sum(dnorm(data, yfun(xtemp,par), 0.2*yfun(xtemp,par), log = T)))
+}
+```
+
+Lastly, let's run the MCMC---for our priors, let's take uniform distributions between $0$ and $0.5$ for all the parameters (you can play with this to make something a little more realistic if you want).
+
+```{r SIbt}
+setup = createBayesianSetup(likelihood = loglike, lower = c(0,0,0), upper = c(0.5,0.5,0.5))
+settings = list(iterations = 10000, message=F)
+
+res = runMCMC(bayesianSetup = setup, settings = settings)
+summary(res)
+plot(res)
+```
+
+Based on this, it looks like we're reasonably well burned in after roughly 1000 iterations. Let's plot the marginal parameter densities starting from there:
+```{r SIbtmarg}
+marginalPlot(res, start=1000)
+```
+
+We may also want to examine the correlations between parameters (this can also help inform us about the identifiability of the parameters):
+```{r SIbtcorr}
+correlationPlot(res)
+```
+
+<br>
+
+### Examining the model fit
+Now, the default plots don't actually tell us how well the model is fitting the data, so let's take a look. First, we can simulate and plot the model using the maximum *a posteriori* parameter values:
+
+```{r plotMAPfit}
+mapests = MAP(res) # MAP generates a list with the MAP parameter estimates, and the associated posterior, likelihood, and prior.
+
+xmap = ode(c(0.99,0.01), times, SIode, mapests$parametersMAP)
+plot(times,data)
+lines(xmap[,1],yfun(xmap,mapests$parametersMAP),type='l')
+```
+
+Looks pretty good! But we should also look at the effect of the uncertainty in the parameters. Let's pull a sample of 1000 values from our chain and plot the model behavior for each sampled parameter set:
+
+```{r SIplotsample}
+# Pull a sample of 1000 parameter sets from our Markov chain
+paramsample = getSample(res, parametersOnly = F, numSamples = 1000)
+
+# We're going to run the model for each parameter set, 
+# and save the output y to ysample
+ysample = matrix(0,length(times),length(paramsample[,1]))
+for(i in 1:length(paramsample[,1])){
+  xtemp = ode(c(0.99,0.01), times, SIode, paramsample[i,1:3])
+  ysample[,i] = yfun(xtemp,paramsample[i,1:3])
+}
+
+# Now let's plot!
+matplot(times,ysample,type='l',col="grey") # sample trajectories
+points(times,data) # data
+lines(xmap[,1],yfun(xmap,mapests$parametersMAP),type='l',col='red') # MAP estimate
+```
+
+To make this a little cleaner, we can/should also make credible intervals---see the *Other things to try* section below.
+
+<br>
+
+### Different Priors
+We can generate a prior using some of the pre-built functions in `BayesianTools`, or if you want, you can make your own from scratch (you just have to give `BayesianTools` a density function (like `dnorm`) and a sampler (like `rnorm`)). Let's try using a truncated normal distribution:
+
+```{r truncatedNormPrior}
+newprior = createTruncatedNormalPrior(mean = rep(0.5,3), sd = rep(5,3), lower = rep(0,3), upper = c(2,2,1))
+bayesianSetup = createBayesianSetup(likelihood = loglike, prior = newprior)
+```
+
+Now we could run this just like before, with `runMCMC`. Alternatively, we might want to take the posterior of our estimation, and use it as the prior for a new run (for example, if are getting new data). In that case, we can use:
+
+```{r post_to_prior}
+newprior = createPriorDensity(res, method = "multivariate", eps = 1e-10, lower = rep(0,3), upper =  rep(1,3), best = NULL)
+bayesianSetup = createBayesianSetup(likelihood = loglike, prior = newprior)
+```
+
+<br>
+
+### Other Things to Try
+- Try some different sampling methods---which ones are faster/slower? How does the chain convergence go for each one?
+- Try out making credible intervals for your model prediction---you can do this by taking a sample from your chain, and then, for example, taking the top 95% of samples (where 'best' is measured by the posterior density) and simulating the model trajectory for just those. This range should approximate the credible interval.
+- Try making the model unidentifiable (e.g. make $\beta = \beta_1 \beta_2$), and see how that affects the estimation.
+- Try the above code but with a more realistic, larger model. Try out a model you've been working on, and/or try it out with our Yemen case study. 
+- If you are familiar with Gillespie's algorithm (or Tau-leaping, or any other method for making a stochastic SIR-type model), try out using a stochastic model instead of a deterministic one! (Note this may be somewhat slow! You might need to reduce the number of iterations while you're debugging your code.)
+
+
+
+### Useful References
+
+- [Some vignettes from the package documentation](https://cran.r-project.org/web/packages/BayesianTools/vignettes/BayesianTools.html#the-different-mcmc-samplers) - includes tutorial examples and illustrates how to use different sampling methods.
+
+- [A nice, short blog post with a quick introduction](https://theoreticalecology.wordpress.com/2017/10/05/the-bayesiantools-r-package-with-general-purpose-mcmc-and-smc-samplers-for-bayesian-statistics/)
+
+- [More vignettes](https://rdrr.io/cran/BayesianTools/f/vignettes/BayesianTools.Rmd)
