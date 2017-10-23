@@ -20,15 +20,14 @@
 	+ [Overview of conjugate priors](http://lesswrong.com/lw/5sn/the_joys_of_conjugate_priors/)
 
 - Andrew's overview of thinking about linear algebra, the next generation matrix, and R0
-	+ [A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Readings/LinearAlgebraicApproachtoR0.pdf)
 
-	<br>
+	+ [A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Readings/LinearAlgebraicApproachtoR0.pdf)
 
 
 - MCMC, Bayesian estimation, etc (more to be added here soon)
+
 	+ [Markov Chain Monte Carlo: an introduction for epidemiologists](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3619958/)
 
-	<br>
 
 - Useful info on the BayesianTools R package
 	+ [BayesianTools on CRAN](https://cran.r-project.org/web/packages/BayesianTools/index.html)
