@@ -25,8 +25,9 @@
 
 
 - MCMC, Bayesian estimation, etc (more to be added here soon)
-
 	+ [Markov Chain Monte Carlo: an introduction for epidemiologists](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3619958/)
+
+	+ [Custom distributions in Stan](https://my.vanderbilt.edu/jeffannis/files/2016/06/AnnisMillerPalmeri2016.pdf)
 
 
 - Useful info on the BayesianTools R package
