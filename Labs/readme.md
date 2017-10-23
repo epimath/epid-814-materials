@@ -10,7 +10,7 @@
 
 - [Metropolis Sampler](https://epimath.github.io/epid-814-materials/Labs/MetropolisSampler/MetropolisSampler.html)
 
-- [Metropolis Sampler](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/BayesianTools.html)
+- [Bayesian Tools Lab](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/BayesianTools.html)
 
 **Ongoing Examples**
 - [Case Study: Cholera in Yemen](https://epimath.github.io/epid-814-materials/Labs/CholeraYemenCaseStudy/)
