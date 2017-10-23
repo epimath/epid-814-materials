@@ -83,7 +83,10 @@ Topics are subject to change and rearrangement!
 
 <br> 
 
-##### <span style="color:#AAAAAA;"> 5.5 A little more Bayesian stuff (see Section 5 for files) </span>
+##### 5.5 A little more Bayesian stuff (see Section 5 also)
+
+- [BayesianTools Lab](https://epimath.github.io/epid-814-materials/Labs/BayesianTools/BayesianTools.html)
+
 
 <br>
 
