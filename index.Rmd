@@ -85,7 +85,7 @@ Topics are subject to change and rearrangement!
 
 ##### 5.5 A little more Bayesian stuff (see Section 5 also)
 
-- [BayesianTools Lab](https://epimath.github.io/epid-814-materials/Labs/BayesianTools/BayesianTools.html)
+- [BayesianTools Lab](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/BayesianTools.html)
 
 
 <br>
