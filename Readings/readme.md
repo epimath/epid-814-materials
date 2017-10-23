@@ -21,3 +21,15 @@
 
 - Andrew's overview of thinking about linear algebra, the next generation matrix, and R0
 	+ [A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Readings/LinearAlgebraicApproachtoR0.pdf)
+
+- MCMC, Bayesian estimation, etc (more to be added here soon)
+	+ [Markov Chain Monte Carlo: an introduction for epidemiologists](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3619958/)
+
+- Useful info on the BayesianTools R package
+	+ [BayesianTools on CRAN](https://cran.r-project.org/web/packages/BayesianTools/index.html)
+
+	+ [Some vignettes from the package documentation](https://cran.r-project.org/web/packages/BayesianTools/vignettes/BayesianTools.html#the-different-mcmc-samplers) - includes tutorial examples and illustrates how to use different sampling methods.
+
+	+ [A nice, short blog post with a quick introduction](https://theoreticalecology.wordpress.com/2017/10/05/the-bayesiantools-r-package-with-general-purpose-mcmc-and-smc-samplers-for-bayesian-statistics/)
+
+	+ More vignettes](https://rdrr.io/cran/BayesianTools/f/vignettes/BayesianTools.Rmd)
