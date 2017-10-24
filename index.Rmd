@@ -102,7 +102,7 @@ Topics are subject to change and rearrangement!
 <br>
 
 
-##### <span style="color:#AAAAAA;"> 8. Data scraping and general wrangling (e.g. twitter scraping) </span>
+##### <span style="color:#AAAAAA;"> 8. Data scraping and general wrangling (e.g. twitter scraping, MMWR scraping) </span>
 
 <br>
 
