@@ -90,23 +90,33 @@ Topics are subject to change and rearrangement!
 
 <br>
 
-##### <span style="color:#AAAAAA;"> 7. Stochastic processes and stochastic modeling methods </span>
+##### 7. Latin Hypercube Sampling</span>
+
+- [Lecture - Latin Hypercube Sampling (Rachel Gicquelais)](https://epimath.github.io/epid-814-materials/Lectures/LHSReview.pptx)
+
+- [LHS Example Lab](https://epimath.github.io/epid-814-materials/Labs/LHSexample/LHSexample.html)
+
+- Readings
+	+ [Marino et al., 2008](https://epimath.github.io/epid-814-materials/Readings/PartialCorr_Marinoetal2008.pdf)
+
+	+ [Morris and Mitchell, 1995](https://epimath.github.io/epid-814-materials/Readings/Morris1995LHS.pdf)
+
+<br>
+
+##### <span style="color:#AAAAAA;"> 8. Data scraping and general wrangling (e.g. twitter scraping, MMWR scraping) </span>
+
+<br>
+
+##### <span style="color:#AAAAAA;"> 9. Stochastic processes and stochastic modeling methods </span>
 
 <span style="color:#AAAAAA;">Maybe include</span>
-
-- <span style="color:#AAAAAA;"> LHS sampling (Rachel?)</span>
 
 - <span style="color:#AAAAAA;"> Gillespie & Tau-leaping (Alicia?)</span>
 
 
 <br>
 
-
-##### <span style="color:#AAAAAA;"> 8. Data scraping and general wrangling (e.g. twitter scraping, MMWR scraping) </span>
-
-<br>
-
-##### <span style="color:#AAAAAA;"> 9. Additional Topics </span>
+##### <span style="color:#AAAAAA;"> 10. Additional Topics </span>
 
 - <span style="color:#AAAAAA;">Spatial modeling & spatial stats </span>
 

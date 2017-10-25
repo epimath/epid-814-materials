@@ -10,3 +10,5 @@
 - [Bayesian Approaches to Parameter Estimation](https://epimath.github.io/epid-814-materials/Lectures/BayesianEstimation.pdf)
 
 - [Understanding the Basic Reproduction Number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Lectures/Understanding_the_Basic_Reproduction_Number.pdf)
+
+- [Latin Hypercube Sampling (Rachel Gicquelais)](https://epimath.github.io/epid-814-materials/Lectures/LHSReview.pptx)

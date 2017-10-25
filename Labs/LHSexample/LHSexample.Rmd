@@ -1,0 +1,193 @@
+---
+title: "LHS Example"
+author: "Marisa Eisenberg"
+date: "10/25/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Load Packages
+We'll use the `lhs` package to do latin hypercube sampling:
+```{r packages}
+library(lhs)
+library(deSolve)
+library(ggplot2)
+library(gridExtra)
+```
+
+
+### Latin Hypercube Sampling (LHS)
+Let's try a few different samplers and see how they look. Try the code below with several of the methods in the documentation, e.g. `randomLHS`,`geneticLHS`,`improvedLHS`, and `optimumLHS`. Do you notice any differences? Also try out the code for 1000 samples instead of 100---are any of the methods faster/slower than others?
+```{r LHS}
+set.seed(8)
+LHSsample = randomLHS(100,2)
+plot(LHSsample[,1],LHSsample[,2])
+```
+
+
+### LHS for an SIR Model
+Now, let's start using LHS to look at how an SIR model behaves over a range of parameter space. We'll start by setting up our SIR model, and including some data to work with:
+```{r modelsetup}
+# Data set
+times = c(0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98)
+data = c(97, 271, 860, 1995, 4419, 6549, 6321, 4763, 2571, 1385, 615, 302, 159, 72, 34)
+
+# Model function
+SIRode <- function(t, x, params){
+  S = x[1]
+  I = x[2]
+  R = x[3]
+  
+  b = params[1]
+  g = params[2]
+  
+  dS = -b*S*I
+  dI = b*S*I - g*I
+  dR = g*I
+  
+  list(c(dS, dI, dR))
+}
+
+# Extra model setup - default parameters, initial conditions, measurement equation
+params = c('beta'=0.4,'gamma'=0.25, 'kappainv'=1/80000)
+x0fun = function(cases,params) {
+  x0 = c(1-(10*params[3]), 10*params[3], 0) # suppose we start with 10 cases
+  names(x0) = c('S0','I0','R0')
+  x0}
+yfun = function(odeSim, params){odeSim[,3]/params[3]} 
+```
+
+<br>
+
+Now that we have a model, let's generate a Latin hypercube sample for the parameters. The `lhs` package generates samples over the range (0,1), but we can rescale that to match the parameter ranges (see below).
+
+```{r LHS-sir}
+numsamples = 1500
+paramsample = randomLHS(numsamples,length(params))
+```
+
+First, let's just verify that our samples do indeed appear uniform for each of the parameters:
+```{r simplehist,out.width = "400px"}
+hist(paramsample[,1])
+hist(paramsample[,2])
+hist(paramsample[,3])
+```
+Yep, looks pretty uniform!
+
+<br>
+
+#### Evaluating the model across parameter space
+
+Now, let's evaluate how a few different quantities of interest across parameter space---R0, the epidemic trajectory, and the goodness-of-fit (negative log likelihood). Let's calculate the quantities of interest for each of the sampled parameter values:
+
+```{r samplestuff, warning=FALSE}
+# these are containers that we'll fill in
+ysample = matrix(NA,length(times),numsamples)
+nllsample = numeric(numsamples)
+R0sample = numeric(numsamples)
+
+# set upper and lower bounds for the parameters - order is beta, gamma, kappainv
+paramlower = c(0,0.1,1/100000)
+paramupper = c(1,0.5,1/10000)
+
+# calculate each quantity for each sampled parameter set
+for(i in 1:numsamples){
+  # We need to re-scale the parameters to be in the upper and lower bounds above
+  ptemp = paramlower + paramupper*paramsample[i,]
+  
+  xtemp <- ode(x0fun(cases,ptemp), times, SIRode, ptemp, method='ode45')
+  ysample[,i] = yfun(xtemp,ptemp)
+  
+  nllsample[i] =  sum(yfun(xtemp,ptemp)) - sum(data*log(yfun(xtemp,ptemp)))
+  
+  R0sample[i] = ptemp[1]/ptemp[2] #R0 = beta/gamma
+}
+```
+
+<br>
+
+#### $R_0$ across parameter space
+
+We can start by looking at $R_0$ as a function of the parameters---let's look at $\beta$ and $\gamma$:
+
+```{r R0sampleplot}
+ggplot(cbind.data.frame(paramsample,nllsample), aes(x = paramsample[,1],y = paramsample[,2],color = R0sample)) + geom_point() + labs(x="beta", y="gamma")
+```
+
+Are these patterns consistent with what you would expect? 
+
+Next, let's look at how specific ranges of $R_0$ cluster in parameter space. We'll take the following quantiles of our $R_0$ sample:
+
+```{r R0quantiles}
+R0quantiles = quantile(R0sample, probs=c(0.25,0.5,0.75,0.9), na.rm=TRUE)
+
+# colors for plotting
+pcolors = c("#555555","#777777","#AAAAAA","#EEEEEE")
+```
+
+One way to look at this is to plot color-coded histograms:
+
+```{r R0hists, message = FALSE, warning=FALSE}
+# Generate the basic histogram for each parameter, over all samples
+betaR0plot = ggplot(as.data.frame(paramsample), aes(paramsample[,1])) + 
+    geom_histogram(fill="#333333") + 
+    labs(x="beta")
+
+gammaR0plot = ggplot(as.data.frame(paramsample), aes(paramsample[,2])) + 
+    geom_histogram(fill="#222222") + 
+    labs(x="gamma")
+
+kR0plot = ggplot(as.data.frame(paramsample), aes(paramsample[,3])) + 
+    geom_histogram(fill="#222222") + 
+    labs(x="kappainv")
+
+# Loop over each quantile and add it to the plot
+for(i in 1:4){
+  pR0temp = paramsample[which(R0sample >= R0quantiles[i]),] #pull just that quantile
+  
+  # add it to the plots
+  betaR0plot = betaR0plot + geom_histogram(data = as.data.frame(pR0temp),aes(V1),fill = pcolors[i])
+  gammaR0plot = gammaR0plot + geom_histogram(data = as.data.frame(pR0temp),aes(V2),fill = pcolors[i])
+  kR0plot = kR0plot + geom_histogram(data = as.data.frame(pR0temp),aes(V3),fill = pcolors[i])
+}
+
+# print the plot
+grid.arrange(betaR0plot, gammaR0plot, kR0plot, ncol=3)
+```
+
+<br>
+
+#### Examining the negative log likelihood
+
+We might also want to look at how the model behavior changes over parameter space, and one way to look at that is by evaluating the goodness of fit for different trajectories.
+
+First, let's look at a histogram of the goodness of fit:
+```{r yhist, out.width = "400px"}
+hist(nllsample)
+```
+
+We can also plot the model behavior as a function of the goodness of fit:
+```{r ytraj}
+# quantiles of the -LL that we'll look at (best 25%, 10%, 5%, 1%)
+quantiles = quantile(nllsample, probs=c(0.25,0.1,0.05,0.01), na.rm=TRUE)
+
+ycolors = c("#88888826","#66666626","#55555526","#44444477")
+
+yplot = ggplot(cbind.data.frame(times,data),aes(x=times,y=data))
+
+for(i in 1:4){
+  ytemp = ysample[,which(nllsample <= quantiles[i])]
+  tempdata = cbind.data.frame('ytemp.min' = apply(ytemp, 1, min), 'ytemp.max' = apply(ytemp, 1, max))
+  
+  yplot = yplot + geom_ribbon(data = tempdata, aes(min=ytemp.min, max=ytemp.max), fill = ycolors[i])
+}
+
+yplot = yplot + geom_point(color = rgb(0,0,0)) + labs(x="time (days)", y="cases")
+print(yplot)
+```
+
+Lastly, adapt the code from the $R_0$ section to instead plot how the negative log likelihood varies as a function of the parameters (i.e. regenerate the colored scatterplot and 3-panel histogram but using the $-LL$ as the quantity of interest).
+

@@ -38,3 +38,8 @@
 	+ [A nice, short blog post with a quick introduction](https://theoreticalecology.wordpress.com/2017/10/05/the-bayesiantools-r-package-with-general-purpose-mcmc-and-smc-samplers-for-bayesian-statistics/)
 
 	+ More vignettes](https://rdrr.io/cran/BayesianTools/f/vignettes/BayesianTools.Rmd)
+
+- Latin Hypercube Sampling and Sensitivity Analysis
+	+ [Marino et al., 2008](https://epimath.github.io/epid-814-materials/Readings/PartialCorr_Marinoetal2008.pdf)
+
+	+ [Morris and Mitchell, 1995](https://epimath.github.io/epid-814-materials/Readings/Morris1995LHS.pdf)

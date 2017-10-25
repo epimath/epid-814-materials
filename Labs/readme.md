@@ -12,6 +12,8 @@
 
 - [Bayesian Tools Lab](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/BayesianTools.html)
 
+- [LHS Example Lab](https://epimath.github.io/epid-814-materials/Labs/LHSexample/LHSexample.html)
+
 **Ongoing Examples**
 - [Case Study: Cholera in Yemen](https://epimath.github.io/epid-814-materials/Labs/CholeraYemenCaseStudy/)
 
