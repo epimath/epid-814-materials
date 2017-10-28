@@ -11,6 +11,7 @@
 - [Metropolis Sampler](https://epimath.github.io/epid-814-materials/Labs/MetropolisSampler/MetropolisSampler.html)
 
 - [Bayesian Tools Lab](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/BayesianTools.html)
+	+ And [code from Alicia ](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/SampleQuantiles.R) for pulling a quantile from a sample (e.g. to generate credible intervals)
 
 - [LHS Example Lab](https://epimath.github.io/epid-814-materials/Labs/LHSexample/LHSexample.html)
 
