@@ -107,7 +107,9 @@ Topics are subject to change and rearrangement!
 
 ##### 8. Data scraping and general wrangling (e.g. twitter scraping, MMWR scraping) </span>
 
-- Using R to pull data from twitter (also possibly facebook and google) (Yu-Han Kao)
+- Using R to pull data using API's - Twitter and Google Maps (also possibly facebook and google) (Yu-Han Kao)
+
+  + [Data Scraping Lab Part 1](https://epimath.github.io/epid-814-materials/Labs/DataScrapingPart1/datascrpe_slides.html)
 
 - <span style="color:#AAAAAA;"> General web-scraping (e.g. maybe MMWR, Promed/Healthmap, Wikipedia, Pubmed etc?)
 

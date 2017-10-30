@@ -15,6 +15,8 @@
 
 - [LHS Example Lab](https://epimath.github.io/epid-814-materials/Labs/LHSexample/LHSexample.html)
 
+- [Data Scraping Part Lab 1](https://epimath.github.io/epid-814-materials/Labs/DataScrapingPart1/datascrpe_slides.html)
+
 **Ongoing Examples**
 - [Case Study: Cholera in Yemen](https://epimath.github.io/epid-814-materials/Labs/CholeraYemenCaseStudy/)
 
