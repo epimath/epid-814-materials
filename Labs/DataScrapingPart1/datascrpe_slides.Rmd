@@ -78,10 +78,10 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r twitter_setup, echo = TRUE, eval=FALSE}
 library(twitteR)
 ### <b>
-consumer_key <- "dd3vPkt9qPD9r3weHH1oWKsPM"
-consumer_secret <- "c2H0WzOgTRjzcste8IPXlw3chkfJvl8BVLQHe37WMcnulRjq0l"
-access_token <- "434221108-g7nOc0smbrB28oaUt43o9BP4GJzn2z6cYPGt7sJ1"
-access_secret <- "qWNUsy8XiHiY4fZqIe15LMTpBE2rpkCgZk1Ss6H0KWzCR"
+consumer_key <- "your consumer key"
+consumer_secret <- "your consumer secret"
+access_token <- "your token"
+access_secret <- "your secret"
 ### </b>
 setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 ```
@@ -119,8 +119,8 @@ for (f in 1:length(target_tweets)){
 ```{r fb_app,echo = TRUE, eval=FALSE}
 library(Rfacebook)
 fb_oauth <- fbOAuth(
-  app_id="1596159733760349",
-  app_secret="80ed4ac9263f22825fcb9e75c4138c67",
+  app_id="your app id",
+  app_secret="you app secret",
   extended_permissions = TRUE)
 
 save(fb_oauth, file="token") #next time you can just load the token
@@ -149,7 +149,7 @@ updateStatus("hiho", fb_oauth) #fb post via R
 <br><br>
 ```{r fb_temp_token, echo = TRUE, eval=FALSE}
 library(Rfacebook)
-fb_oauth <- "EAACEdEose0cBAHq5BckCFOiiF7SWtZC9Jsbc21jVHMLUBp4hvRX5zt7aEx9JcEFQlSN85BBGps0VSQvXzaZAZBvwTUQqaIugV6K72UdZAZCRb6WEBtinDhUgJDkXOHMMEXGGQaPHYUonZATjz1umv2W4ZBAqaaSfdAsAtY2ppyyWF4lO11avbGnGLFpYz5WgcEZD"
+fb_oauth <- "your temp token"
 getUsers("me",token=fb_oauth) #public profile
 head(getLikes(user="me", token=fb_oauth)) #likes
 updateStatus("hiho", fb_oauth) #fb post via R
@@ -215,6 +215,7 @@ target_loc <- geoCode("ann arbor sph")
 sphmap <- get_map(location = c(lon = as.numeric(target_loc[2]), 
                   lat = as.numeric(target_loc[1])), zoom = 10,
                   maptype = "roadmap", scale = 2)
+ggmap(sphmap)
 ```
 
 
