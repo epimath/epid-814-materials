@@ -168,7 +168,7 @@ target_post<-getPost(pages$id[1], fb_oauth, n=100, likes = TRUE, comments = FALS
 target_user<-getUsers(target_post$likes$from_id, fb_oauth)
 ```
 
-## Getting data from google map
+## Getting data from google maps
 <br><br>
 ```{r googlemap_example,echo = TRUE, eval=FALSE}
 # adapted the script from Jose Gonzalez
@@ -183,7 +183,7 @@ query_url<- function(address, return.call = "json", sensor = "false") {
 }
 ```
 
-## Getting data from google map
+## Getting data from google maps
 
 ```{r googlemap_example_conc1,echo = TRUE, eval=FALSE}
 #get and parse json result
@@ -206,7 +206,7 @@ geoCode <- function(address,verbose=FALSE) {
 ```
 
 
-## Getting data from google map
+## Getting data from google maps
 <br><br>
 ```{r ooglemap_example_conc2,echo = TRUE, eval=FALSE}
 # adapted the script from Jose Gonzalez

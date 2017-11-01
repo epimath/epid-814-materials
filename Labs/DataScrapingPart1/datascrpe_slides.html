@@ -322,7 +322,7 @@ yhk_friends &lt;- getFriends(fb_oauth, simplify = TRUE)</pre>
 target_post&lt;-getPost(pages$id[1], fb_oauth, n=100, likes = TRUE, comments = FALSE)
 target_user&lt;-getUsers(target_post$likes$from_id, fb_oauth)</pre>
 
-</article></slide><slide class=''><hgroup><h2>Getting data from google map</h2></hgroup><article  id="getting-data-from-google-map">
+</article></slide><slide class=''><hgroup><h2>Getting data from google maps</h2></hgroup><article  id="getting-data-from-google-maps">
 
 <p><br><br></p>
 
@@ -337,7 +337,7 @@ query_url&lt;- function(address, return.call = &quot;json&quot;, sensor = &quot;
   return(URLencode(u))
 }</pre>
 
-</article></slide><slide class=''><hgroup><h2>Getting data from google map</h2></hgroup><article  id="getting-data-from-google-map-1">
+</article></slide><slide class=''><hgroup><h2>Getting data from google maps</h2></hgroup><article  id="getting-data-from-google-maps-1">
 
 <pre class = 'prettyprint lang-r'>#get and parse json result
 geoCode &lt;- function(address,verbose=FALSE) {
@@ -357,7 +357,7 @@ geoCode &lt;- function(address,verbose=FALSE) {
   }
 }</pre>
 
-</article></slide><slide class=''><hgroup><h2>Getting data from google map</h2></hgroup><article  id="getting-data-from-google-map-2">
+</article></slide><slide class=''><hgroup><h2>Getting data from google maps</h2></hgroup><article  id="getting-data-from-google-maps-2">
 
 <p><br><br></p>
 
