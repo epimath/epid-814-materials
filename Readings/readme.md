@@ -43,3 +43,5 @@
 	+ [Marino et al., 2008](https://epimath.github.io/epid-814-materials/Readings/PartialCorr_Marinoetal2008.pdf)
 
 	+ [Morris and Mitchell, 1995](https://epimath.github.io/epid-814-materials/Readings/Morris1995LHS.pdf)
+
+- [Useful Agent Based Modeling Resources](https://github.com/mjbommar/cscs-530-w2015)
