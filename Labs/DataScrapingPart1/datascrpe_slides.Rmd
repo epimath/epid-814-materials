@@ -78,10 +78,10 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r twitter_setup, echo = TRUE, eval=FALSE}
 library(twitteR)
 ### <b>
-consumer_key <- "your_consumer_key"
-consumer_secret <- "your_consumer_secret"
-access_token <- "your_access_token"
-access_secret <- "your_access_secret"
+consumer_key <- "dd3vPkt9qPD9r3weHH1oWKsPM"
+consumer_secret <- "c2H0WzOgTRjzcste8IPXlw3chkfJvl8BVLQHe37WMcnulRjq0l"
+access_token <- "434221108-g7nOc0smbrB28oaUt43o9BP4GJzn2z6cYPGt7sJ1"
+access_secret <- "qWNUsy8XiHiY4fZqIe15LMTpBE2rpkCgZk1Ss6H0KWzCR"
 ### </b>
 setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 ```
@@ -119,8 +119,8 @@ for (f in 1:length(target_tweets)){
 ```{r fb_app,echo = TRUE, eval=FALSE}
 library(Rfacebook)
 fb_oauth <- fbOAuth(
-  app_id="your app id",
-  app_secret="your app secret",
+  app_id="1596159733760349",
+  app_secret="80ed4ac9263f22825fcb9e75c4138c67",
   extended_permissions = TRUE)
 
 save(fb_oauth, file="token") #next time you can just load the token
@@ -149,7 +149,7 @@ updateStatus("hiho", fb_oauth) #fb post via R
 <br><br>
 ```{r fb_temp_token, echo = TRUE, eval=FALSE}
 library(Rfacebook)
-fb_oauth <- "your own temptoken"
+fb_oauth <- "EAACEdEose0cBAHq5BckCFOiiF7SWtZC9Jsbc21jVHMLUBp4hvRX5zt7aEx9JcEFQlSN85BBGps0VSQvXzaZAZBvwTUQqaIugV6K72UdZAZCRb6WEBtinDhUgJDkXOHMMEXGGQaPHYUonZATjz1umv2W4ZBAqaaSfdAsAtY2ppyyWF4lO11avbGnGLFpYz5WgcEZD"
 getUsers("me",token=fb_oauth) #public profile
 head(getLikes(user="me", token=fb_oauth)) #likes
 updateStatus("hiho", fb_oauth) #fb post via R
@@ -158,7 +158,7 @@ yhk_friends <- getFriends(fb_oauth, simplify = TRUE)
 
 ## Getting data from FB
 - Getting credentials: consumer key & secret, access token & token secret
-    + Creating a temporary token through <https://developers.facebook.com/>
+    + Creating a temporary token through <https://developers.facebook.com/tools/explorer/>
     + Less restrictions
     + Only for 2 hrs
 <br><br>
@@ -222,13 +222,13 @@ sphmap <- get_map(location = c(lon = as.numeric(target_loc[2]),
 
 - Python: have very comprehensive libraries (lots of them are directly developed by the companies)
 - Your browser: try <http://maps.googleapis.com/maps/api/geocode/json>
-- Online platforms: try [agigee for twitter](https://apigee.com/console/twitter)
+- Online platforms: try [apigee for twitter](https://apigee.com/console/twitter)
 
 ## Ethics
 
 - Be nice to people...
 - Don't make evil bots
-- Don't flood/block people's servers
+- Ask data nicely
 
 ## Data scraping without APIs
 

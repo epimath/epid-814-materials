@@ -219,10 +219,10 @@
 <p><br></p>
 
 <pre class = 'prettyprint lang-r'>library(twitteR)
-<b>consumer_key &lt;- &quot;your_consumer_key&quot;
-consumer_secret &lt;- &quot;your_consumer_secret&quot;
-access_token &lt;- &quot;your_access_token&quot;
-access_secret &lt;- &quot;your_access_secret&quot;
+<b>consumer_key &lt;- &quot;dd3vPkt9qPD9r3weHH1oWKsPM&quot;
+consumer_secret &lt;- &quot;c2H0WzOgTRjzcste8IPXlw3chkfJvl8BVLQHe37WMcnulRjq0l&quot;
+access_token &lt;- &quot;434221108-g7nOc0smbrB28oaUt43o9BP4GJzn2z6cYPGt7sJ1&quot;
+access_secret &lt;- &quot;qWNUsy8XiHiY4fZqIe15LMTpBE2rpkCgZk1Ss6H0KWzCR&quot;
 </b>setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Getting data from Twitter</h2></hgroup><article  id="getting-data-from-twitter-4" class="smaller">
@@ -263,8 +263,8 @@ for (f in 1:length(target_tweets)){
 
 <pre class = 'prettyprint lang-r'>library(Rfacebook)
 fb_oauth &lt;- fbOAuth(
-  app_id=&quot;your app id&quot;,
-  app_secret=&quot;your app secret&quot;,
+  app_id=&quot;1596159733760349&quot;,
+  app_secret=&quot;80ed4ac9263f22825fcb9e75c4138c67&quot;,
   extended_permissions = TRUE)
 
 save(fb_oauth, file=&quot;token&quot;) #next time you can just load the token
@@ -300,7 +300,7 @@ updateStatus(&quot;hiho&quot;, fb_oauth) #fb post via R
 </ul>
 
 <pre class = 'prettyprint lang-r'>library(Rfacebook)
-fb_oauth &lt;- &quot;your own temptoken&quot;
+fb_oauth &lt;- &quot;EAACEdEose0cBAHq5BckCFOiiF7SWtZC9Jsbc21jVHMLUBp4hvRX5zt7aEx9JcEFQlSN85BBGps0VSQvXzaZAZBvwTUQqaIugV6K72UdZAZCRb6WEBtinDhUgJDkXOHMMEXGGQaPHYUonZATjz1umv2W4ZBAqaaSfdAsAtY2ppyyWF4lO11avbGnGLFpYz5WgcEZD&quot;
 getUsers(&quot;me&quot;,token=fb_oauth) #public profile
 head(getLikes(user=&quot;me&quot;, token=fb_oauth)) #likes
 updateStatus(&quot;hiho&quot;, fb_oauth) #fb post via R
@@ -312,7 +312,7 @@ yhk_friends &lt;- getFriends(fb_oauth, simplify = TRUE)</pre>
 <li>Getting credentials: consumer key &amp; secret, access token &amp; token secret
 
 <ul>
-<li>Creating a temporary token through <a href='https://developers.facebook.com/' title=''>https://developers.facebook.com/</a></li>
+<li>Creating a temporary token through <a href='https://developers.facebook.com/tools/explorer/' title=''>https://developers.facebook.com/tools/explorer/</a></li>
 <li>Less restrictions</li>
 <li>Only for 2 hrs <br><br></li>
 </ul></li>
@@ -373,7 +373,7 @@ sphmap &lt;- get_map(location = c(lon = as.numeric(target_loc[2]),
 <ul>
 <li>Python: have very comprehensive libraries (lots of them are directly developed by the companies)</li>
 <li>Your browser: try <a href='http://maps.googleapis.com/maps/api/geocode/json' title=''>http://maps.googleapis.com/maps/api/geocode/json</a></li>
-<li>Online platforms: try <a href='https://apigee.com/console/twitter' title=''>agigee for twitter</a></li>
+<li>Online platforms: try <a href='https://apigee.com/console/twitter' title=''>apigee for twitter</a></li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Ethics</h2></hgroup><article  id="ethics">
@@ -381,7 +381,7 @@ sphmap &lt;- get_map(location = c(lon = as.numeric(target_loc[2]),
 <ul>
 <li>Be nice to people&#8230;</li>
 <li>Don&#39;t make evil bots</li>
-<li>Don&#39;t flood/block people&#39;s servers</li>
+<li>Ask data nicely</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Data scraping without APIs</h2></hgroup><article  id="data-scraping-without-apis">
