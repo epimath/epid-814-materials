@@ -112,6 +112,11 @@ Topics are subject to change and rearrangement!
 
 - Data visualization using D3
 
+    + [Part 1: SVG, JavaScript, and D3 Lab](https://epimath.github.io/epid-814-materials/Labs/SVGJavaScriptD3/D3lab.html)
+  
+    + [Finished example file](https://epimath.github.io/epid-814-materials/Labs/SVGJavaScriptD3/D3LabExample.html)
+
+
 - <span style="color:#AAAAAA;"> General web-scraping (e.g. maybe MMWR, Promed/Healthmap, Wikipedia, Pubmed etc?)
 
 <!-- stuff discussed

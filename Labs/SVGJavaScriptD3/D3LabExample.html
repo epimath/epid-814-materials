@@ -1,0 +1,259 @@
+<html>
+<head>
+    <title>Epid 814 D3 Lab</title>
+    <style>
+  .node {
+    stroke: #000;
+    stroke-width: 1.5px;
+    }
+  .link {
+    fill: none;
+    stroke: #999;
+    stroke-opacity: .6;
+    }
+
+  .node text {
+/*   font: 14px helvetica; */
+    font-family: 'Lato', sans-serif;
+    }
+
+    </style>
+
+    <!-- since I used a fancy font above: -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    </head>
+<body>
+
+
+<!-- <svg width="100" height="100">
+<circle cx="50" cy="50" r="30" style="stroke:#000066; fill:#5555DD"/>
+</svg>
+
+<svg width="100" height="100">
+<path d=" M 15 5 
+          L 5 90 
+          L 60 75 
+          L 15 5" 
+          stroke="DeepSkyBlue" stroke-width="2" fill="none" /> 
+</svg> -->
+
+<!-- <script>
+  alert("Hello, world!");
+</script> -->
+
+
+
+<script>
+// d3.select("body").style("background-color", "AliceBlue");
+
+// d3.select("circle")
+//   .attr("cx",80)
+//   .style("fill", "#DD55DD");
+
+// var oursvg = d3.select("body")
+//     .append("svg")
+//     .attr("id","tempsvg")
+//     .attr("width",500)
+//     .attr("height",500);
+
+// // d3.select("#tempsvg")
+// // 	.append("circle")
+// // 	.attr("cx",20)
+// // 	.attr("cy",20)
+// // 	.attr("r",10)
+// // 	.style("stroke","#000066")
+// // 	.style("fill","#999999");
+
+// oursvg.append("circle")
+// 	.attr("cx",20)
+// 	.attr("cy",20)
+// 	.attr("r",10)
+// 	.style("stroke","#000066")
+// 	.style("fill","#999999");
+
+
+// var data = [];
+// for(var i=0; i<100; i++){
+//     var datapoint = {};
+//     datapoint['x'] = Math.random() * 400;
+//     datapoint['y'] = datapoint['x']*(0.5+Math.random());
+//     datapoint['name'] = 'Name'+i;
+//     datapoint['color'] = Math.random();
+//     data.push(datapoint);
+// }
+
+
+// var color = d3.scale.linear()
+//     .domain([0,1])
+//     .range(["blue", "red"]);
+
+// oursvg.selectAll("circle")
+//     .data(data)
+//     .enter()
+//     .append("circle")
+//     .attr("cy", function(d) { return d.y;  })
+//     .attr("cx", function(d) { return d.x;  })
+//     .attr("r", 6)
+//     .style("opacity", 0.6)
+//     .style("fill", function(d) { return color(d.color);});
+
+
+
+
+
+///// Generate simulated data /////
+var data = [];
+for(var i=0; i<100; i++){
+    var datapoint = {};
+    datapoint['x'] = Math.random() * 400;
+    datapoint['y'] = datapoint['x']*(0.5+Math.random());
+    datapoint['name'] = 'Name'+i;
+    datapoint['color'] = Math.random();
+    data.push(datapoint);
+}
+
+
+///// Generate Scatterplot /////
+
+// Size and margins for the chart
+var margin = {top: 20, right: 65, bottom: 60, left: 70}, 
+  width = 550 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
+
+// Set up color scheme
+var color = d3.scale.linear()
+    .domain([0,1])
+    .range(["blue", "red"]);
+
+
+// Main svg for plotting
+var chart = d3.select("body")
+    .append('svg')
+    .attr('width', width + margin.right + margin.left)
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('class', 'chart');
+
+// Translate the location of the chart in the SVG to account for margins
+var main = chart.append('g')
+      .attr('transform','translate('+margin.left+','+margin.top+')')
+      .attr('width', width)
+      .attr('height', height)
+      .attr('class', 'main');
+
+
+// Set up x and y axis scales using D3
+var x = d3.scale.linear()
+      .domain([0, 400])
+      .range([0, width]);
+
+var y = d3.scale.linear()
+      .domain([0,600])
+      .range([height, 0]);
+
+
+// Draw the x axis
+var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient('bottom');
+
+var xAxisDraw = main.append('g')
+      .attr('transform', 'translate(0,' + height + ')')
+      .attr('class', 'axis')
+      .style('fill', 'none')
+      .style('stroke', '000')
+      .style('stroke-width', '1.25px')
+      .call(xAxis);
+
+xAxisDraw.selectAll('text').style('fill','000').style('stroke','none');
+
+
+// Draw the y axis
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient('left');
+
+var yAxisDraw = main.append('g')
+      .attr('transform', 'translate(0,0)')
+      .attr('class', 'axis')
+      .style('fill', 'none')
+      .style('stroke', '000')
+      .style('stroke-width', '1.25px')
+      .call(yAxis);
+      
+yAxisDraw.selectAll('text').style('fill','000').style('stroke','none');
+
+   
+// Draw the scatterplot
+var g = main.append("svg:g");
+
+var dataDraw = g.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cy", function(d) { return y(d.y);  })
+    .attr("cx", function(d) { return x(d.x);  })
+    .attr("r", 6)
+    .style("opacity", 0.6)
+    .style("fill", function(d) { return color(d.color);});
+
+    
+// Add x axis label      
+chart.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width+margin.left)
+    .attr("y", height+margin.top+margin.bottom-15)
+    .text("X-axis label");
+    
+// Add y axis label
+chart.append("text")
+    .attr("text-anchor", "end")
+    .attr("y", margin.left/6)
+    .attr("x", -margin.top)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("Y-axis label");
+
+    
+// Add the hover tooltip
+
+// Make a div to hold the tooltip contents
+var tip = d3.select('body')
+      .append('div')
+      .attr('class', 'tip')
+      .style('border', '1px solid grey')
+	  .style('background','rgba(255,255,255,0.8)')
+      .style('padding', '5px')
+      .style('position', 'absolute')
+      .style('display', 'none')
+      .on('mouseover', function(d, i) {
+        tip.transition().duration(0);
+      })
+      .on('mouseout', function(d, i) {
+        tip.style('display', 'none');
+      });
+
+// Add the tooltip
+dataDraw.on('mouseover', function(d, i) {
+        tip.transition().duration(0);
+        tip.style('top', y(d.y) - 10 + 'px');
+        tip.style('left', x(d.x) + 'px');
+        tip.style('display', 'block');
+        tip.html(d.name +"<br> Color Score: "+d.color);
+      })
+      .on('mouseout', function(d, i) {
+        tip.transition()
+        .delay(500)
+        .style('display', 'none');
+      });
+
+	
+</script>
+
+
+
+
+
+
+
+

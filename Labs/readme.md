@@ -17,6 +17,9 @@
 
 - [Data Scraping Part Lab 1](https://epimath.github.io/epid-814-materials/Labs/DataScrapingPart1/datascrpe_slides.html)
 
+- [SVG, JavaScript, and D3 Lab](https://epimath.github.io/epid-814-materials/Labs/SVGJavaScriptD3/D3lab.html)
+	+ [Finished example file](https://epimath.github.io/epid-814-materials/Labs/SVGJavaScriptD3/D3LabExample.html)
+
 **Ongoing Examples**
 - [Case Study: Cholera in Yemen](https://epimath.github.io/epid-814-materials/Labs/CholeraYemenCaseStudy/)
 
