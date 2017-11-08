@@ -1,0 +1,183 @@
+<html>
+<head>
+	<title>It's raining cats and dogs!</title>
+	<style>
+.node {
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+.link {
+    stroke: #999;
+/*     stroke-opacity: .6; */
+}
+
+.node text {
+/*   font: 14px helvetica; */
+font-family: 'Lato', sans-serif;
+}
+
+	</style>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+<script src="cat_dog_subnx.js"></script>
+
+
+<div id = "chart"></div>
+<script>
+
+//Setup
+var margin = {left:90, top:120, right:90, bottom:100},
+	width = Math.min(window.innerWidth, 900) - margin.left - margin.right,
+    height = Math.min(window.innerWidth, 700) - margin.top - margin.bottom;
+
+// Color Scheme
+// var color = d3.scale.category10();
+var ourcolors = ["#555555","#EFD48B","#3963A8"];
+
+var color = d3.scale.ordinal() //make scale from colors above
+    .domain(d3.range(ourcolors.length))
+	.range(ourcolors);
+
+// SVG
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom);
+
+
+//Network
+var force = d3.layout.force()
+    .charge(-300)
+    .linkDistance(function (d) {return 400-(250*d.weight) - 100*(graph.nodes[0].community === graph.nodes[1].community ? 1:0);})//(200)
+    .size([width, height]);
+
+force.nodes(graph.nodes)
+    .links(graph.links)
+    .start();
+    
+var link = svg.selectAll(".link") //make links
+    .data(graph.links)
+    .enter().append("line")
+    .attr("class", "link")
+    .attr("stroke-opacity", function (d) {return Math.max(0.01,10*d.weight);})
+    .style("stroke-width", function (d) {return 25*d.weight;});
+
+var node = svg.selectAll(".node") //make nodes
+    .data(graph.nodes)
+    .enter().append("g")
+    .attr("class", "node")
+    .call(force.drag)
+    .on('dblclick', connectedNodes); //This is for highlighting
+
+node.append("circle")
+	.attr("r", function (d) {return 10*d.value;})
+    .style("fill", function (d) {return color(d.community);})
+
+node.append("text")
+      .attr("dx", 10)
+      .attr("dy", ".35em")
+      .text(function(d,i) { return d.value == 1 ? d.id:"" })//i})
+      .style("fill", "black")
+      .style("stroke-width", 0);
+
+var centers = [
+      {x: 5 * width / 6, y: 4 * height / 6, fixed: true},
+      {x: 2 * width / 6, y: 4 * height / 6, fixed: true},
+      {x: 3 * width / 6, y: 4 * height / 6, fixed: true}
+    ];
+
+// Give coords for links & nodes
+force.on("tick", function (e) {   
+    
+    // This pulls each community towards the centers listed above (don't forget to add e argument to tick fcn)
+    var k = e.alpha * 1.5;
+  graph.nodes.forEach(function(node) {
+    var center = centers[node.community-1];
+    node.x += (center.x - node.x) * k;
+    node.y += (center.y - node.y) * k;
+  });
+    
+    //positioning for links & nodes
+    link.attr("x1", function (d) {
+        return d.source.x;
+    })
+        .attr("y1", function (d) {
+        return d.source.y;
+    })
+        .attr("x2", function (d) {
+        return d.target.x;
+    })
+        .attr("y2", function (d) {
+        return d.target.y;
+    });
+
+	d3.selectAll("circle").attr("cx", function (d) {
+        return d.x;
+    })
+        .attr("cy", function (d) {
+        return d.y;
+    });
+    d3.selectAll("text").attr("x", function (d) {
+        return d.x;
+    })
+        .attr("y", function (d) {
+        return d.y;
+    });
+});
+
+
+////// Highlighting Effects //////
+
+//Toggle stores whether the highlighting is on
+var toggle = 0;
+
+//Create an array logging what is connected to what
+var linkedByIndex = {};
+for (i = 0; i < graph.nodes.length; i++) {
+    linkedByIndex[i + "," + i] = 1;
+};
+graph.links.forEach(function (d) {
+    linkedByIndex[d.source.index + "," + d.target.index] = 1;
+});
+
+//This function looks up whether a pair are neighbours  
+function neighboring(a, b) {
+    return linkedByIndex[a.index + "," + b.index];
+}
+
+function connectedNodes() {
+
+    if (toggle == 0) {
+        //Reduce the opacity of all but the neighbouring nodes
+        d = d3.select(this).node().__data__;
+		node.style("stroke-width", function (o) {
+            return d===o ? 5 : 1.5;
+//         node.style("opacity", function (o) {
+//             return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+        });
+        
+        link.style("opacity", function (o) {
+            return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+        });
+        
+        //Reduce the op
+        
+        toggle = 1;
+    } else {
+        //Put them back to opacity=1
+//         node.style("opacity", 1);
+		node.style("stroke-width", 1.5);
+        link.style("opacity", 1);
+        toggle = 0;
+    }
+
+}
+
+
+
+
+</script>
+
+</body>
