@@ -73,11 +73,12 @@ Everything we do below (unless we explicitly talk about editing the CSS or other
 
 ## Load the Data ##
 
-Let's load the cat and dog data set:
+Let's load the cat and dog data set (link to file [here](cat_dog_subnx.js)):
 ```{html load data}
 <script src="cat_dog_subnx.js"></script>
 ```
 <script src="cat_dog_subnx.js"></script>
+
 
 (Discuss node and edge meanings together in class---open data set and talk over, explain co-followership, etc.)
 
