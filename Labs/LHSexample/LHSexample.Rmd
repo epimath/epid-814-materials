@@ -96,7 +96,7 @@ paramupper = c(1,0.5,1/10000)
 # calculate each quantity for each sampled parameter set
 for(i in 1:numsamples){
   # We need to re-scale the parameters to be in the upper and lower bounds above
-  ptemp = paramlower + paramupper*paramsample[i,]
+  ptemp = paramlower + (paramupper-paramlower)*paramsample[i,]
   
   xtemp <- ode(x0fun(cases,ptemp), times, SIRode, ptemp, method='ode45')
   ysample[,i] = yfun(xtemp,ptemp)
