@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Organized by type:
 
-* [Readings](./Readings/)
+* [Readings](Readings/)
 
-* [Lectures](./Lectures/)
+* [Lectures](Lectures/)
 
-* [Labs](./Labs/)
+* [Labs](Labs/)
 
 <hr>
 
