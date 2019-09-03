@@ -21,7 +21,7 @@
 
 - Andrew's overview of thinking about linear algebra, the next generation matrix, and R0
 
-	+ [A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Readings/LinearAlgebraicApproachtoR0.pdf)
+	+ [A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](Readings/LinearAlgebraicApproachtoR0.pdf)
 
 
 - MCMC, Bayesian estimation, etc (more to be added here soon)

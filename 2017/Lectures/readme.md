@@ -1,14 +1,14 @@
 
 ## Lectures
 
-- [Introduction to Parameter Estimation and Maximum Likelihood](https://epimath.github.io/epid-814-materials/Lectures/ParameterEstimationML.pdf)
+- [Introduction to Parameter Estimation and Maximum Likelihood](Lectures/ParameterEstimationML.pdf)
 
-- [Identifiability and Parameter Uncertainty](https://epimath.github.io/epid-814-materials/Lectures/IdentifiabilityUncertainty.pdf)
+- [Identifiability and Parameter Uncertainty](Lectures/IdentifiabilityUncertainty.pdf)
 
-- [Separation and Firth's Penalized Likelihood](https://epimath.github.io/epid-814-materials/Lectures/FirthsPenalizedLikelihood.pdf)
+- [Separation and Firth's Penalized Likelihood](Lectures/FirthsPenalizedLikelihood.pdf)
 
-- [Bayesian Approaches to Parameter Estimation](https://epimath.github.io/epid-814-materials/Lectures/BayesianEstimation.pdf)
+- [Bayesian Approaches to Parameter Estimation](Lectures/BayesianEstimation.pdf)
 
-- [Understanding the Basic Reproduction Number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Lectures/Understanding_the_Basic_Reproduction_Number.pdf)
+- [Understanding the Basic Reproduction Number (Andrew Brouwer)](Lectures/Understanding_the_Basic_Reproduction_Number.pdf)
 
-- [Latin Hypercube Sampling (Rachel Gicquelais)](https://epimath.github.io/epid-814-materials/Lectures/LHSReview.pptx)
+- [Latin Hypercube Sampling (Rachel Gicquelais)](Lectures/LHSReview.pptx)

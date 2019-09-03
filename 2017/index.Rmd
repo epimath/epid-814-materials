@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Organized by type:
 
-* [Readings](https://epimath.github.io/epid-814-materials/Readings/)
+* [Readings](Readings/)
 
-* [Lectures](https://epimath.github.io/epid-814-materials/Lectures/)
+* [Lectures](Lectures/)
 
-* [Labs](https://epimath.github.io/epid-814-materials/Labs/)
+* [Labs](Labs/)
 
 <hr>
 
@@ -39,25 +39,25 @@ Topics are subject to change and rearrangement!
 
 ##### 2. Parameter Estimation and Maximum Likelihood
 
-- Introduction to Parameter Estimation and Maximum Likelihood - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/ParameterEstimationML.pdf)
+- Introduction to Parameter Estimation and Maximum Likelihood - [Lecture](Lectures/ParameterEstimationML.pdf)
 
-- Parameter Estimation Coding Session - [Lab Assignment](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/)
+- Parameter Estimation Coding Session - [Lab Assignment](Labs/EstimationLab/)
 
-- Extra mini-lecture by special request - [Separation and Firth's Penalized Likelihood](https://epimath.github.io/epid-814-materials/Lectures/FirthsPenalizedLikelihood.pdf)
+- Extra mini-lecture by special request - [Separation and Firth's Penalized Likelihood](Lectures/FirthsPenalizedLikelihood.pdf)
 
 <br>
 
 ##### 3. Uncertainty and Identifiability
 
-- Identifiability and Parameter Uncertainty - [Lecture](https://epimath.github.io/epid-814-materials/Lectures/IdentifiabilityUncertainty.pdf)
+- Identifiability and Parameter Uncertainty - [Lecture](Lectures/IdentifiabilityUncertainty.pdf)
 
-- [Identifiability and Uncertainty Lab](https://epimath.github.io/epid-814-materials/Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)
+- [Identifiability and Uncertainty Lab](Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)
 
 <br>
 
 ##### 4. Visualization with ggplot2
 
-- [Lab - our collection of ggplot examples](https://epimath.github.io/epid-814-materials/Labs/ggplotExamples/)
+- [Lab - our collection of ggplot examples](Labs/ggplotExamples/)
 
 - [Nice, comprehensive ggplot tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
 
@@ -69,54 +69,54 @@ Topics are subject to change and rearrangement!
 
 ##### 5. MCMC & Bayesian approaches
 
-- [Lecture - Bayesian Approaches to Parameter Estimation](https://epimath.github.io/epid-814-materials/Lectures/BayesianEstimation.pdf)
+- [Lecture - Bayesian Approaches to Parameter Estimation](Lectures/BayesianEstimation.pdf)
 
-- [Lab - Metropolis Sampler](https://epimath.github.io/epid-814-materials/Labs/MetropolisSampler/MetropolisSampler.html)
+- [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)
 
 <br>
 
 ##### 6. R0 & dynamical systems/threshold conditions (including stochastic R0, type/target R0's)
 
-- [Lecture - Understanding the Basic Reproduction Number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Lectures/Understanding_the_Basic_Reproduction_Number.pdf)
+- [Lecture - Understanding the Basic Reproduction Number (Andrew Brouwer)](Lectures/Understanding_the_Basic_Reproduction_Number.pdf)
 
-- [Reading - A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](https://epimath.github.io/epid-814-materials/Readings/LinearAlgebraicApproachtoR0.pdf)
+- [Reading - A linear algebraic approach to understanding the basic reproduction number (Andrew Brouwer)](Readings/LinearAlgebraicApproachtoR0.pdf)
 
 <br> 
 
 ##### 5.5 A little more Bayesian stuff (see Section 5 also)
 
-- [BayesianTools Lab](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/BayesianTools.html)
+- [BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html)
 
-- And [code from Alicia ](https://epimath.github.io/epid-814-materials/Labs/BayesianToolsLab/SampleQuantiles.R) for pulling a quantile from a sample (e.g. to generate credible intervals, etc)
+- And [code from Alicia ](Labs/BayesianToolsLab/SampleQuantiles.R) for pulling a quantile from a sample (e.g. to generate credible intervals, etc)
 
 
 <br>
 
 ##### 7. Latin Hypercube Sampling</span>
 
-- [Lecture - Latin Hypercube Sampling (Rachel Gicquelais)](https://epimath.github.io/epid-814-materials/Lectures/LHSReview.pptx)
+- [Lecture - Latin Hypercube Sampling (Rachel Gicquelais)](Lectures/LHSReview.pptx)
 
-- [LHS Example Lab](https://epimath.github.io/epid-814-materials/Labs/LHSexample/LHSexample.html)
+- [LHS Example Lab](Labs/LHSexample/LHSexample.html)
 
 - Readings
-	+ [Marino et al., 2008](https://epimath.github.io/epid-814-materials/Readings/PartialCorr_Marinoetal2008.pdf)
+	+ [Marino et al., 2008](Readings/PartialCorr_Marinoetal2008.pdf)
 
-	+ [Morris and Mitchell, 1995](https://epimath.github.io/epid-814-materials/Readings/Morris1995LHS.pdf)
+	+ [Morris and Mitchell, 1995](Readings/Morris1995LHS.pdf)
 
 <br>
 
 ##### 8. Data scraping and general wrangling (e.g. twitter scraping, MMWR scraping) </span>
 
 - Using R to pull data using API's - Twitter, Facebook, and Google Maps (Yu-Han Kao)
-    + [Data Scraping Lab Part 1](https://epimath.github.io/epid-814-materials/Labs/DataScrapingPart1/datascrpe_slides.html)<br><br>
+    + [Data Scraping Lab Part 1](Labs/DataScrapingPart1/datascrpe_slides.html)<br><br>
 
 - Data visualization using D3
 
-    + [Part 1: SVG, JavaScript, and D3 Lab](https://epimath.github.io/epid-814-materials/Labs/SVGJavaScriptD3/D3lab.html)
+    + [Part 1: SVG, JavaScript, and D3 Lab](Labs/SVGJavaScriptD3/D3lab.html)
   
-    + [Finished example file](https://epimath.github.io/epid-814-materials/Labs/SVGJavaScriptD3/D3LabExample.html)
+    + [Finished example file](Labs/SVGJavaScriptD3/D3LabExample.html)
     
-    + [Part 2: Network Visualization with JavaScript and D3](https://epimath.github.io/epid-814-materials/Labs/D3NetworkVis/index.html)<br><br>
+    + [Part 2: Network Visualization with JavaScript and D3](Labs/D3NetworkVis/index.html)<br><br>
 
 
 - <span style="color:#AAAAAA;"> General web-scraping (e.g. maybe MMWR, Promed/Healthmap, Wikipedia, Pubmed etc?)
