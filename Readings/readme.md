@@ -8,7 +8,7 @@
 - ggplot tutorials
 	+ [Nice, comprehensive ggplot tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
 
-	+ [Another tutorial](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/), and an [introductory course](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) on datacamp
+	+ [Another tutorial](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
 
 	+ [Mapping with ggplot](http://zevross.com/blog/2014/07/16/mapping-in-r-using-the-ggplot2-package/)
 
@@ -37,7 +37,7 @@
 
 	+ [A nice, short blog post with a quick introduction](https://theoreticalecology.wordpress.com/2017/10/05/the-bayesiantools-r-package-with-general-purpose-mcmc-and-smc-samplers-for-bayesian-statistics/)
 
-	+ More vignettes](https://rdrr.io/cran/BayesianTools/f/vignettes/BayesianTools.Rmd)
+	+ [More vignettes](https://rdrr.io/cran/BayesianTools/f/vignettes/BayesianTools.Rmd)
 
 - Latin Hypercube Sampling and Sensitivity Analysis
 	+ [Marino et al., 2008](https://epimath.github.io/epid-814-materials/Readings/PartialCorr_Marinoetal2008.pdf)

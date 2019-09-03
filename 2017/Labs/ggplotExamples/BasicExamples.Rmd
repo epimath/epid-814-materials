@@ -1,0 +1,178 @@
+---
+title: "Basic ggplot examples"
+author: "Marisa Eisenberg"
+date: "10/3/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width=5, fig.height=4)
+```
+
+### Load library & data set
+
+```{r loadstuff}
+library(ggplot2)
+
+YemenData = read.csv('Datasets/YemenCholeraOutbreak.csv')
+YemenData$Date = as.Date(YemenData$Date)#, format='%m/%d/%y')
+YemenData = YemenData[order(YemenData$Date),]
+YemenData$Times = as.numeric(YemenData$Date-as.Date('5/22/2017', format='%m/%d/%Y'))
+```
+
+### Basic Plots
+
+#### Notes
+
+- `ggplot` takes dataframes as the basic object, *not* an x vector and y vector
+
+- Once you've loaded the dataset, you can tell `ggplot` which variables to use for the x values, y values, color, etc. But note that ggplot won't actually plot them until you tell it to draw soemthing!
+
+- `geom`'s are different types of plot objects that you can add (draw) to the plot. You can set up points, lines, and other kinds of objects.
+
+- `aes` = aesthetics, this lets you tell ggplot what information to plot and how. You can set aes either in the main `ggplot` call or within a `geom`
+
+<br>
+
+#### Simple Example
+Let's do a simple example:
+
+```{r basicplots}
+# select the data  say which variables to use     draw as points
+ggplot(YemenData,  aes(x=Date, y=Deaths))        + geom_point()
+```
+
+<br>
+
+
+You can also add some automatic processing, like a Loess-smoothed line:
+```{r smoothplot}
+ggplot(YemenData, aes(x=Date, y=Deaths)) + geom_point() + geom_smooth(method = 'loess')
+```
+
+<br>
+
+#### Slightly fancier plots
+
+Let's add some more variables and specify the colors! We can also make a variable to hold the plot (in this case `yemenplot`) so we can add things later on. If we make `yemenplot` a variable, then we'll need to use `print(yemenplot)` to display the plot at the end.
+
+```{r betterplots}
+yemenplot = ggplot(YemenData) + 
+  geom_point(aes(x=Date, y=Deaths), color = 'steelblue') +
+  geom_smooth(aes(x=Date, y=Deaths), method = 'loess') +
+  geom_point(aes(x=Date, y=Cases), color = 'grey') +
+  geom_smooth(aes(x=Date, y=Cases), color = 'black', method = 'loess')
+print(yemenplot)
+```
+
+<br>
+
+Looks nice, but the axis labels aren't quite right, and we let's add a title. We'll do that with the `labs` function:
+
+```{r labels}
+yemenplot = yemenplot + labs(title="Yemen Cholera Epidemic", x="Date", y="Number of Individuals")
+print(yemenplot)
+```
+
+<br>
+
+#### Figure Legends
+
+Now, we need a figure legend! Can make it appear automatically by defining the color in `aes`. 
+
+```{r legend}
+yemenplot = ggplot(YemenData) + 
+  geom_point(aes(x=Date, y=Deaths, color = 'Deaths')) +
+  geom_smooth(aes(x=Date, y=Deaths), method = 'loess') +
+  geom_point(aes(x=Date, y=Cases, color = 'Cases')) +
+  geom_smooth(aes(x=Date, y=Cases), color = 'red', method = 'loess') + 
+  labs(title="Yemen Cholera Epidemic", subtitle = "Data from Humanitarian Data Exchange", x="Date", y="Number of Individuals")
+print(yemenplot)
+```
+
+<br>
+
+But now, the legend title is "colour". To remove the legend title or change it to something else, we can use either the `guides` or the overall figure `theme`:
+```{r legendfixes}
+yemenplot = yemenplot + guides(color = guide_legend(''))
+  # theme(legend.title=element_blank())
+  # guides(color = guide_legend('Legend Title!'))
+print(yemenplot)
+```
+
+<br>
+
+#### More variations
+
+Change the color scheme:
+```{r colorscheme}
+yemenplot = yemenplot + scale_colour_brewer(palette = "Set1")
+print(yemenplot)
+```
+
+<br>
+
+Change the legend location:
+```{r legendlocation}
+yemenplot + theme(legend.position="bottom")
+```
+
+
+#### Changing the dot size
+
+Make the size of the dots = the number of deaths at that time:
+```{r dotsize}
+yemenplot = ggplot(YemenData) + 
+  geom_point(aes(x=Date, y=Cases, color = 'Cases', size = Deaths)) +
+  geom_smooth(aes(x=Date, y=Cases), color = 'red') + 
+  labs(title="Yemen Cholera Epidemic", subtitle = "Data from Humanitarian Data Exchange", x="Date", y="Number of Individuals") +
+  guides(color = guide_legend(''))
+print(yemenplot)
+```
+
+
+#### Panel Plots
+
+We can plot multiple plots together using `grid_arrange`:
+
+```{r grid}
+library(gridExtra)
+
+yemencases = ggplot(YemenData) +
+  geom_point(aes(x=Date, y=Cases), color = 'maroon') +
+  geom_smooth(aes(x=Date, y=Cases), color = 'red')
+yemendeaths = ggplot(YemenData) +
+  geom_point(aes(x=Date, y=Deaths), color = 'steelblue') +
+  geom_smooth(aes(x=Date, y=Deaths), color = 'blue')
+
+grid.arrange(yemencases, yemendeaths, ncol=2)
+```
+
+
+<br>
+
+Or, if the panels is indicated in one of the columns, you can use `facet_wrap`:
+
+```{r facetwrap}
+facetplot = ggplot(YemenData) + 
+  geom_point(aes(x=Times, y=Deaths, color = Bulletin.Type)) +
+  facet_wrap(~ Bulletin.Type, ncol=2) 
+  # labs(title="Yemen Cholera Epidemic", subtitle = "Data from Humanitarian Data Exchange", x="Time", y="Number of Individuals") + 
+  # theme(legend.title=element_blank())
+  # guides(color = guide_legend(''))
+print(facetplot)
+```
+
+`facet_grid` is similar but clears off some of the headers when you have more than one variable that you're looking at over the panels (e.g. age categories as rows, gender as columns).
+
+<br>
+
+#### Saving
+
+Lastly, to save your plot as a file, you can use `ggsave`:
+
+```{r saving}
+# Saving
+ggsave("plotexample.png")  # saves the last plot
+ggsave("plotexample.pdf", plot=yemenplot)  # save a specific plot
+```

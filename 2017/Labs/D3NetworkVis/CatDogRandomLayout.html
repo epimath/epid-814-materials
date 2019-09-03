@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title>It's raining cats and dogs!</title>
+	<style>
+.node {
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+.link {
+    stroke: #999;
+/*     stroke-opacity: .6; */
+}
+
+.node text {
+/*   font: 14px helvetica; */
+font-family: 'Lato', sans-serif;
+}
+
+	</style>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+<script src="cat_dog_subnx.js"></script>
+
+
+<div id = "chart"></div>
+<script>
+
+//Setup
+var margin = {left:90, top:120, right:90, bottom:100},
+	width = Math.min(window.innerWidth, 900) - margin.left - margin.right,
+    height = Math.min(window.innerWidth, 700) - margin.top - margin.bottom;
+
+// Color Scheme
+var ourcolors = ["#555555","#EFD48B","#3963A8"];
+
+var color = d3.scale.ordinal() //make scale from colors above
+    .domain(d3.range(ourcolors.length))
+	.range(ourcolors);
+
+
+
+
+//Assign random locations for each node
+for(var i=0; i<graph.nodes.length; i++){
+    graph.nodes[i].x = Math.random()*width;
+    graph.nodes[i].y = Math.random()*height;
+}
+
+
+
+
+// SVG
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom);
+
+
+
+
+
+
+//Network
+var link = svg.selectAll(".link") //make links
+    .data(graph.links)
+    .enter().append("line")
+    .attr("class", "link")
+    .attr("x1", function (d) {return graph.nodes[d.source].x; })
+    .attr("y1", function (d) {return graph.nodes[d.source].y; })
+    .attr("x2", function (d) {return graph.nodes[d.target].x; })
+    .attr("y2", function (d) {return graph.nodes[d.target].y; })
+    .attr("stroke-opacity", function (d) {return Math.max(0.01,10*d.weight);})
+    .style("stroke-width", function (d) {return 25*d.weight;});
+
+var node = svg.selectAll(".node") //make nodes
+    .data(graph.nodes)
+    .enter().append("g")
+    .attr("class", "node");
+
+
+node.append("circle")
+	.attr("r", function (d) {return 10*d.value;})
+    .attr("cx", function (d,i) {return d.x})
+    .attr("cy", function (d) {return d.y})
+    .style("fill", function (d) {return color(d.community);})
+
+
+
+
+</script>
+
+</body>
+</html>
