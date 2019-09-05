@@ -27,9 +27,95 @@ Organized by type:
 <hr>
 
 ## Course schedule
-Topics are subject to change and rearrangement!
+Topics are subject to change and rearrangement! (We may also not get to all the topics listed)
+
+<br>
+
+##### 1. Parameter estimation and maximum likelihood
+
+- Maximum likelihood with mathematical models <!-- - [Lecture](Lectures/ParameterEstimationML.pdf)-->
+
+- Parameter estimation coding session <!-- - [Lab Assignment](Labs/EstimationLab/)-->
+
+<br>
+
+##### 2. Uncertainty and identifiability
+
+- Identifiability and parameter uncertainty <!-- - [Lecture](Lectures/IdentifiabilityUncertainty.pdf)-->
+
+- Identifiability and uncertainty lab
+<!--[Identifiability and uncertainty Lab](Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)-->
 
 <br>
 
 
+##### 3. Intro to MCMC & Bayesian approaches
+
+- Intro to Bayesian Approaches to Parameter Estimation <!-- - [Lecture](Lectures/BayesianEstimation.pdf)-->
+
+- MCMC Introduction and Lab <!-- - [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)-->
+
+
+<br>
+
+##### 4 Digging in to Bayesian estimation for mathematical models
+
+- BayesianTools Lab <!--[BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html)-->
+
+<br>
+
+##### 5. Visualization with ggplot2
+
+- Intro to ggplot and collection of examples <!--[Lab - our collection of ggplot examples](Labs/ggplotExamples/)-->
+
+- [Nice ggplot tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
+
+- [Another tutorial](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
+
+- [Mapping with ggplot](http://zevross.com/blog/2014/07/16/mapping-in-r-using-the-ggplot2-package/)
+
+<br>
+
+##### 6. Data-scraping and data-wrangling 
+(moved this up since it might be useful for making data sets we can play with for the ML and networks sections below)
+
+- Using R to pull data using API's - Twitter, Facebook, and Google Maps
+
+- Collecting and working with twitter data
+
+- An [interesting article](https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135) about the ethics of using public data and our perception of privacy
+
+<br>
+
+##### 7. Basic intro to some useful algorithms/machine learning methods
+- Introduction, definitions, jargon
+- K-means clustering
+- Support vector machines
+- Singular value decomposition (possibly a little linear algebra review also?)
+- Basic neural networks
+
+<br>
+
+##### 7. Network analysis and network modeling
+- Review of network concepts (centrality, modularity, etc.)
+- Network simulation methods (Barabasi-Albert, Erdos-Renyi, etc.)
+- Configuration models
+- Build example network simulation models (e.g. infection/behavior spread on a network)
+
+<br>
+
+##### 8. Stochastic models
+- Ideas, Markov models
+- Gillespie algorithm
+- Tau-leaping
+- Possibly discuss hybrid models, journal club some of [Linda Allen's book](https://www.amazon.com/Introduction-Stochastic-Processes-Applications-Biology-ebook/dp/B005H6YSNM)
+
+<br>
+
+##### 9. Additional Topics/possible journal club days
+- Game theory and modeling behavior
+- Spatial statistics and spatial/spatiotemporal clustering
+- Analysis/wrangling of text data
+- Optimization algorithms
+- Agent-based modeling
 
