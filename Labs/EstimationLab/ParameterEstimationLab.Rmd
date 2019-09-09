@@ -1,0 +1,294 @@
+---
+title: "Epid 814 - Parameter Estimation Lab"
+author: "Marisa Eisenberg"
+date: "9/9/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Setup
+Start by loading the relevant libraries---in this case, we'll be using `deSolve` and `plotly` (to make some contour plots later on in the lab---note that `plotly` also uses `ggplot2`). 
+
+
+```{r stuff, message=FALSE}
+library(deSolve)
+library(plotly)
+# source('MiniFisher.R') # We'll use these next time
+# source('ProfLike.R')
+```
+
+<br>
+
+## Parameter Estimation with an SIR Model & Simulated Data
+
+Let’s estimate parameters and investigate the uncertainty in the parameter estimates. We will work with the scaled version of the model, letting the birth/death rate be zero (i.e. \(\mu = 0\) ) since the outbreak data is on a short timescale (so there are probably few births/deaths during this timeframe). 
+<br>
+
+#### Data
+For data, we'll use the following (simulated) data for now (in units of numbers of individuals and days):
+
+```{r data}
+times = c(0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98)
+cases = c(97, 271, 860, 1995, 4419, 6549, 6321, 4763, 2571, 1385, 615, 302, 159, 72, 34)
+dataset = cbind(times, cases)
+```
+<br>
+
+#### SIR Model
+The equations are given by:
+\[\begin{aligned}
+\dot{S} &= -\beta S I\\
+\dot{I} &=\beta S I - \gamma I\\
+\dot{R} &= \gamma I\\   
+\end{aligned}\]
+where the measurement equation is \(y = \kappa I\). The variables \(S, I\), and \(R\) represent the proportion of the population that is of susceptible, infectious, and recovered (so \(S+I+R = 1\), and we take \(\kappa = k\cdot N\), where \(k\) is the reporting rate and \(N\) is the population size. (We will only estimate the overall parameter \(\kappa\) for now, but just so you know what goes into it.) 
+
+Let's start by writing out these equations as a function. Here's an example model function, for an SI Model:
+
+```{r SImodel}
+SIode <- function(t, x, params){
+  S = x[1]
+  I = x[2]
+  
+  b = params[1]
+  g = params[2]
+  
+  dSdt = -b*S*I
+  dIdt = b*S*I
+  
+  list(c(dSdt, dIdt))
+}
+```
+
+Adapt the above SI model code to match the equations for the SIR model. Call your new function `SIRode`, and add the \(R\) equation into the new function. To do this, you'll can add an extra variable, `R = x[3]`, and return the derivative of that variable, `dRdt`. You'll also need to add the missing \(\gamma I\) term.
+
+```{r SIRmodel, echo=FALSE}
+SIRode <- function(t, x, params){
+  S = x[1]
+  I = x[2]
+  R = x[3]
+  
+  b = params[1]
+  g = params[2]
+  
+  dSdt = -b*S*I
+  dIdt = b*S*I - g*I
+  dRdt = g*I
+  
+  list(c(dSdt, dIdt, dRdt))
+}
+```
+<br>
+
+#### Model Simulation
+Write code to simulate your SIR model and plot both the data set and the measurement equation \(y = \kappa I\). Use the following parameter values: \(\beta = 0.4\), \(\gamma = 0.25\), \(\kappa = 80000\). We'll actually work with \(\kappa^{-1}\) instead of \(\kappa\), because it's easier for the estimation algorithm to work with (since \(\kappa\) can be arbitrarily large but \(\kappa^{-1}\) is typically bounded between 0 and 1).
+```{r initparam}
+params = c('beta'=0.4,'gamma'=0.25, 'kappainv'=1/80000)
+```
+
+For initial conditions, we will take:
+\[
+\begin{aligned}
+S(0) &= 1-I(0)\\
+I(0) &= data(0)/\kappa\\
+R(0) &= 0
+\end{aligned}
+\]
+where \(data(0)\) is the first data value. Note that the initial conditions depend on both the data and the parameter values! I often like to make the initial conditions a function, so that if we ever want to change the initial condition set up, we can just change the function definition and everything else will update automatically. 
+
+```{r initialconds}
+x0fun = function(cases,params) {
+  x0 = c(1-(cases[1]*params[3]), cases[1]*params[3], 0)
+  names(x0) = c('S0','I0','R0')
+  x0}
+```
+
+We have the model equations in our function above, but the last thing we need to simulate the model is the **measurement equation**---this defines what variables of the model we are observing. We'll make this a function too, so that way it's easy to update the code if we decide to measure something else. We'll make our measurement equation `yfun` take two inputs: the model simulation (call this `odeSim`) and the parameters (we'll call this `params`).
+```{r measeq}
+yfun = function(odeSim, params){odeSim[,3]/params[3]} 
+# note that:
+#  - odeSim[,3] = the I variable values over time
+#  - params[3] = kappainv (this is why we're dividing by params[3] instead of multiplying)
+```
+
+Finally, let's simulate the model!
+```{r modelsim}
+xinit <- ode(x0fun(cases,params), times, SIRode, params, method='ode45')
+plot(times, yfun(xinit,params), type='l')
+points(dataset)
+```
+
+<br>
+
+####Parameter Estimation
+Next, write code to estimate \(\beta, \gamma\), and \(\kappa\) from the given data using Poisson maximum likelihood. Use the parameter values given above as starting parameter values, and you can use the initial conditions from above as well (note though that they depend on \(\kappa\), which is a fitted parameter---so while we aren't fitting the initial conditions, they will need to change/update as we fit the parameters!). This means you will need to update your initial conditions inside the cost function, so MATLAB/R uses the updated initial conditions when it tries new parameter values.
+<br>
+
+To do this, you'll need a **likelihood function**: 
+```{r likelihood}
+SIRML=function(params,times,data){
+  params = abs(params)
+  # Simulate model
+  xcurr = ode(x0fun(data,params), times, SIRode, params, method='ode45')
+  
+  # Measurement equation
+  y = yfun(xcurr,params)
+  
+  # Negative Log Likelihood (NLL)
+  NLL =  sum(y) - sum(data*log(y)) # Poisson ML
+    # note this is a slightly shortened version--there's an additive constant term missing but it 
+    # makes calculation faster and won't alter the threshold. Alternatively, can do:
+  # NLL = -sum(log(dpois(round(data),round(y)))) # the round is b/c Poisson is for (integer) count data
+    # this can also barf if data and y are too far apart because the dpois will be ~0, which makes the log angry
+  
+  # ML using normally distributed measurement error (least squares)
+  # NLL = -sum(log(dnorm(data,y,0.1*mean(data)))) # example WLS assuming sigma = 0.1*mean(data)
+  # NLL = sum((y - data)^2)  # alternatively can do OLS but note this will mess with the thresholds 
+  #                             for the profile! This version of OLS is off by a scaling factor from
+  #                             actual LL units.
+  
+  # return(NLL) 
+}
+```
+Make sure you understand what each line does and why!
+
+Armed with our likelihood function, we can now estimate the model parameters from the data:
+```{r paramest, message=FALSE, warning=FALSE}
+res = optim(params,fn=SIRML,times=times,data=cases)#,method='Nelder-Mead')
+paramests = res$par
+```
+
+Finally, let's the data together with our model using the parameter estimates we found. First we have to re-simulate the model using the parameter estimate values, otherwise we just have parameter estimates but no way to see what the fit looks like!
+```{r simest}
+xest = ode(x0fun(cases,paramests), times, SIRode, paramests, method='ode45')
+```
+
+Now let's plot---based on the `eyeball test', how well does the model fit the data? 
+```{r plotest}
+plot(times, yfun(xest,paramests), type='l')
+points(dataset)
+```
+
+Also take a look at your parameter estimates---do they seem reasonable? How close to the initial values are they?
+
+In the next lab, we'll also see how to evaluate the uncertainty on the parameter estimates.
+
+<br>
+<hr>
+
+## Exploring likelihood functions
+
+Re-run your estimation code with some alternative likelihood functions, such as:
+
+* Normally distributed constant measurement error, i.e. ordinary least squares, \(Cost = \sum_i (data_i - y_i)^2\). 
+
+* Normally distributed measurement error dependent on the data, weighted least squares, e.g. using Poisson-style variance, \(Cost = \sum_i \frac{(data_i - y_i)^2}{data_i}\). This assumes the variance at any given data point is equal to the data (\(\sigma^2 = data\)), but you can also try other weightings! (Such as letting \(\sigma^2 = data^2\).)
+
+* Extended/weighted least squares, e.g. also using Poisson-style variance, \(Cost = \sum_i \frac{(data_i - y_i)^2}{y_i}\). This assumes the variance at the \(i\)th data point is equal to \(y_i\), the model prediction at that time.
+
+* Maximum likelihood assuming other distributions for the observation error, e.g. negative binomial
+
+How do the parameter estimates and/or uncertainty differ from the estimates you got earlier? What are the underlying assumptions for on the model/measurement equation/likelihood that generate the different least squares cost functions given above?
+
+<br>
+
+####Examining the likelihood shape
+The recovery rate \(\gamma\) is often approximately known, so let's fix the value of \(\gamma = 0.25\). Now we have two unknown parameters, \(\beta\) and \(\kappa^{-1}\). Plot the likelihood as a surface or heat map as a function of \(\beta\) and \(\kappa\) (i.e. so that color is the likelihood value, and your x and y axes are the \(\beta\) and \(\kappa\) values respectively. How does the shape of the likelihood change as you switch likelihood functions? (It may not change much, but you can often notice small differences between likelihood choices.)
+
+As an example, here's some code to plot the likelihood for the Poisson case we used earlier. You can try different ranges for beta and kappa depending on how far out you want to look at the plot:
+```{r heatmap}
+# Define the ranges for each parameter, and make an empty matrix for the likelihood values
+betarange = seq(0.35,0.45,0.01)
+kappainvrange = seq(1e-05,2e-05,1e-6)
+likevals = matrix(NA,nrow=length(betarange),ncol=length(kappainvrange))
+
+# Go through each point on the contour plot and calculate the likelihood value at those coordinates
+for (i in 1:length(betarange)){
+  for(j in 1:length(kappainvrange)){
+    likevals[i,j] = SIRML(c(betarange[i],0.25,kappainvrange[j]),times,cases)
+  }
+}
+
+# Make a contour plot!
+plot_ly(x = betarange, y = kappainvrange, z = likevals, type = "contour") %>%
+ layout(xaxis = list(title = "beta"), yaxis = list(title = "kappainv")) %>%
+ colorbar(title = "-LL")
+```
+
+<br>
+<hr>
+
+## Parameter Estimation with an Un-scaled SIR model
+Try out estimating the parameters and evaluating uncertainty for a slightly different version of the model---this time we won't scale the variables to be in fractions of the population, and we'll assume density-dependent (or is this frequency-dependent?? I always get the names mixed up) transmission:
+\[
+\begin{aligned}
+\dot{S} &= -\frac{b}{N} S I \\
+\dot{I} &= \frac{b}{N} S I- \gamma I\\
+\dot{R} &= \gamma I \\
+y &= k I
+\end{aligned}
+\]
+Adapt your **model function code** for this new model and estimate the parameters---we'll the following starting parameters this time:
+```{r initparamUn}
+params = c('b'=0.4,'gamma'=0.25, 'k'=0.8, 'N'=100000)   # note that now we're working with k, not kappainv!
+```
+For initial conditions, we'll use:
+```{r initialcondsUn}
+x0fun = function(cases,params) {
+  x0 = c(params[4]-(cases[1]/params[3]), cases[1]/params[3], 0)
+  names(x0) = c('S0','I0','R0')
+  x0}
+```
+And since we're using `k` rather than `kappainv`, now our measurement equation is:
+```{r measeqUn}
+yfun = function(odeSim, params){odeSim[,3]*params[3]} 
+```
+
+How does the optimizer perform? How long does it take to run compared to the last model? What parameter estimates do you get? Plot a contour plot of the likelihood, but this time fix `b` and `gamma` to their starting values and plot the likelihood for `k` and `N`. How does the likelihood look? Are there any potential problems for the optimizer?
+
+```{r SIRmodelUn, echo=FALSE}
+SIRode <- function(t, x, params){
+  S = x[1]
+  I = x[2]
+  R = x[3]
+  
+  b = params[1]
+  g = params[2]
+  N = params[4]
+  
+  dS = -b*S*I/N
+  dI = b*S*I/N - g*I
+  dR = g*I
+  
+  list(c(dS, dI, dR))
+}
+```
+
+```{r paramestUn, echo=FALSE}
+# res = optim(params,fn=SIRML,times=times,data=cases)#,method='Nelder-Mead')
+# paramests = res$par
+```
+
+```{r heatmapUn, echo=FALSE}
+# krange = seq(0.7,0.9,0.01)
+# Nrange = seq(0.9e05,1.1e05,1e3)
+# likevals = matrix(NA,nrow=length(krange),ncol=length(Nrange))
+# 
+# for (i in 1:length(krange)){
+#   for(j in 1:length(Nrange)){
+#     likevals[i,j] = SIRML(c(0.4,0.25,krange[i],Nrange[j]),times,cases)
+#   }
+# }
+# 
+# plot_ly(x = krange, y = Nrange, z = likevals, type = "contour") %>%
+#  layout(xaxis = list(title = "k"), yaxis = list(title = "N")) %>%
+#  colorbar(title = "-LL")
+```
+
+
+<br>
+<br>
+<br>
