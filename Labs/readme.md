@@ -3,7 +3,7 @@
 
 **Labs**
 
-- [Parameter Estimation Lab](Labs/EstimationLab/)
+- [Parameter Estimation Lab](EstimationLab/)
 
 **Ongoing Examples and Data Sets**
 
