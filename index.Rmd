@@ -31,7 +31,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 1. Parameter estimation and maximum likelihood
+##### 1. Parameter estimation and maximum likelihood (9/9/19 and 9/11/19)
 
 - Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf) (9/9/2019)
 
@@ -39,9 +39,26 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 2. Uncertainty and identifiability
+##### 2. Math modeling how-to workshop (9/16/19)
+- Main ideas
 
-- Identifiability and parameter uncertainty - [Lecture](Lectures/IdentifiabilityUncertainty.pdf) (9/11/19 and 9/16/19)
+    - **How to go from a question to a diagram to equations to code?**
+
+    - What kind of model to use under different circumstances?
+   
+- **To Do**: Everyone bring a specific question that they might want to use a model to answer, and we'll workshop it together for the 9/16/19 class. 
+    
+    - Think about what knowledge about the system you have---what are the causal processes? What features/variables/processes might be important to include to answer your question? What do you think we might be able to ignore or simplify out?
+
+    - Also, if you think you might want to estimate parameters for the model, think a about what kind of data you might want to use! What can you measure/observe, e.g. through epidemiological studies or biological experiments?
+
+- We will go through each question/problem together and discuss how we might build a model that can answer that question, what the assumptions and limitations of different kinds of models are, etc.
+
+<br>
+
+##### 3. Uncertainty and identifiability
+
+- Identifiability and parameter uncertainty - [Lecture](Lectures/IdentifiabilityUncertainty.pdf) 
 
 - [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
@@ -51,7 +68,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 <br>
 
 
-##### 3. Intro to MCMC & Bayesian approaches
+##### 4. Intro to MCMC & Bayesian approaches
 
 - Intro to Bayesian Approaches to Parameter Estimation <!-- - [Lecture](Lectures/BayesianEstimation.pdf)-->
 
@@ -60,13 +77,13 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 4 Digging in to Bayesian estimation for mathematical models
+##### 5. Digging in to Bayesian estimation for mathematical models
 
 - BayesianTools Lab <!--[BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html)-->
 
 <br>
 
-##### 5. Visualization with ggplot2
+##### 6. Visualization with ggplot2
 
 - Intro to ggplot and collection of examples <!--[Lab - our collection of ggplot examples](Labs/ggplotExamples/)-->
 
@@ -78,7 +95,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 6. Data-scraping and data-wrangling 
+##### 7. Data-scraping and data-wrangling 
 (moved this up since it might be useful for making data sets we can play with for the ML and networks sections below)
 
 - Using R to pull data using API's - Twitter, Facebook, and Google Maps
@@ -89,7 +106,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 7. Basic intro to some useful algorithms/machine learning methods
+##### 8. Basic intro to some useful algorithms/machine learning methods
 - Introduction, definitions, jargon
 - K-means clustering
 - Support vector machines
@@ -98,7 +115,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 7. Network analysis and network modeling
+##### 9. Network analysis and network modeling
 - Review of network concepts (centrality, modularity, etc.)
 - Network simulation methods (Barabasi-Albert, Erdos-Renyi, etc.)
 - Configuration models
@@ -106,7 +123,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 8. Stochastic models
+##### 10. Stochastic models
 - Ideas, Markov models
 - Gillespie algorithm
 - Tau-leaping
@@ -114,7 +131,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 9. Additional Topics/possible journal club days
+##### 11. Additional Topics/possible journal club days
 - Game theory and modeling behavior
 - Spatial statistics and spatial/spatiotemporal clustering
 - Analysis/wrangling of text data
