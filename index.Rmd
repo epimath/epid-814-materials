@@ -41,7 +41,9 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 ##### 2. Uncertainty and identifiability
 
-- Identifiability and parameter uncertainty <!-- - [Lecture](Lectures/IdentifiabilityUncertainty.pdf)-->
+- Identifiability and parameter uncertainty - [Lecture](Lectures/IdentifiabilityUncertainty.pdf)
+
+- [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
 - Identifiability and uncertainty lab
 <!--[Identifiability and uncertainty Lab](Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)-->

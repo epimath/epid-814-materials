@@ -1,9 +1,7 @@
 
 ## Readings
 
-- Compartmental Models and DAGs - [Discussion paper](https://www.degruyter.com/view/j/em.ahead-of-print/em-2016-0007/em-2016-0007.xml)
-
-- Firth's Penalized Likelihood - [Heinze & Schemper, 2002](http://onlinelibrary.wiley.com/doi/10.1002/sim.1047/epdf)
+- [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
 - ggplot tutorials
 	+ [Nice, comprehensive ggplot tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)

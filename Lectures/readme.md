@@ -3,4 +3,4 @@
 
 - [Introduction to Parameter Estimation and Maximum Likelihood](ParameterEstimationML.pdf)
 
-- Identifiability and Parameter Uncertainty
+- [Identifiability and Parameter Uncertainty](IdentifiabilityUncertainty.pdf)
