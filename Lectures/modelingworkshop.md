@@ -17,8 +17,9 @@
         - Decide what should be variables vs. parameters vs. forcing function inputs, etc.
     - Discuss how to math-matize the diagram to 
         - ODEs
+    	- Difference equations
         - Stochastic models
-        - ABMs
+        - Agent-based models
         - Etc.
     - What output variables (outcomes, quantities of interest) should I track?
     - How to set parameters, inputs, & initial conditions?
