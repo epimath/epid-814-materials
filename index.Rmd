@@ -54,6 +54,8 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 - We will go through each question/problem together and discuss how we might build a model that can answer that question, what the assumptions and limitations of different kinds of models are, etc.
 
+- [Discussion prompts](Lectures/modelingworkshop.md)
+
 <br>
 
 ##### 3. Uncertainty and identifiability
