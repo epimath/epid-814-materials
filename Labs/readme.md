@@ -5,6 +5,10 @@
 
 - [Parameter Estimation Lab](EstimationLab/)
 
+- [Identifiability & Uncertainty Lab](IdentifiablilityUncertaintyLab/)
+
+
+
 **Ongoing Examples and Data Sets**
 
 

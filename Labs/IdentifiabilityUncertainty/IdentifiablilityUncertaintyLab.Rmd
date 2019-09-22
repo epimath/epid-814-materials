@@ -1,0 +1,191 @@
+---
+title: "Epid 814 - Identifiability & Uncertainty Lab"
+author: "Marisa Eisenberg"
+date: "9/23/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Setup
+Start by loading the relevant libraries. We will also be using two extra files (`MiniFisher` and `ProfLike`) that you can find on the [Epid 814 Github Repository](https://github.com/epimath/epid-814-materials/tree/master/Labs/IdentifiabilityUncertainty).
+
+```{r stuff, message=FALSE}
+library(deSolve)
+library(plotly)
+library(Matrix)
+source('MiniFisher.R')
+source('ProfLike.R')
+```
+
+<br>
+
+## 1) Structural identifiability for an SIR model
+We will consider a version of the classical SIR model that you've seen in some of the previous lectures:
+\[
+\begin{aligned}
+\dot{S} &= \mu N -b S I - \mu S\\
+\dot{I} &=b S I-(\mu+\gamma) I\\
+\dot{R} &= \gamma I - \mu R\\   
+\end{aligned}
+\]
+with measurement equation \(y=kI\). The variables \(S\), \(I\), and \(R\) represent the number of susceptible, infectious, and recovered individuals, and we take \(y\) to indicate that we are measuring a proportion of the infected population (e.g. if not all cases are reported). The parameters \(\mu, b, \gamma, N\), and \(k\) represent (respectively) the birth/death rate, transmission parameter, recovery rate, total population size, and the proportion of the infected population which is reported/observed. 
+
+Enter the model into the web app [COMBOS](http://biocyb1.cs.ucla.edu/combos/), and examine its identifiability. When you enter it into COMBOS, you have to name your state variables using \(x\)'s, so let \(x_1 = S\) and \(x_2 = I\). 
+
+- Are all the parameters for this model structurally identifiable?
+
+- If any are not, what are the identifiable combinations? Why do you think the combinations have this structure?
+
+- What happens if we re-scale the model to be in terms of fractions of the population instead of individuals? In other words, rescale the model to let $s = S/N, i = I/N,$ and $r = R/N$. When you do, you will be able to combine some parameters to let $\beta = bN$ and $\kappa = kN$. Rewrite your model equations in this rescaled and reduced parameter form, and re-run it in COMBOS---how does the identifiability look now?
+
+## 2) Revisiting parameter estimation with the SIR model
+
+We're going to use the same SIR model and data as we used in the [parameter estimation lab](https://epimath.github.io/epid-814-materials/Labs/EstimationLab/). 
+Go there and set up your data, SIR model, initial conditions, measurement equation (`yfun`), and likelihood function. In case you didn't set up the SIR model last time, here it is:
+
+```{r SIRmodel}
+SIRode = function(t, x, params){
+  S = x[1]
+  I = x[2]
+  R = x[3]
+  
+  b = params[1]
+  g = params[2]
+  
+  dS = -b*S*I
+  dI = b*S*I - g*I
+  dR = g*I
+  
+  list(c(dS, dI, dR))
+}
+```
+
+```{r oldversion, echo=FALSE, message=FALSE, warning=FALSE}
+times = c(0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98)
+cases = c(97, 271, 860, 1995, 4419, 6549, 6321, 4763, 2571, 1385, 615, 302, 159, 72, 34)
+# times = times[1:7]
+# cases = cases[1:7]
+dataset = cbind(times, cases)
+
+params = c('beta'=0.4,'gamma'=0.25, 'kappainv'=1/80000)
+
+x0fun = function(cases,params) {
+  x0 = c(1-(cases[1]*params[3]), cases[1]*params[3], 0)
+  names(x0) = c('S0','I0','R0')
+  x0}
+
+yfun = function(odeSim, params){odeSim[,3]/params[3]} 
+
+SIRML=function(params,times,data){
+  params = abs(params)
+  # Simulate model
+  xcurr = ode(x0fun(data,params), times, SIRode, params, method='ode45')
+  
+  # Measurement equation
+  y = yfun(xcurr,params)
+  
+  # Negative Log Likelihood (NLL)
+  NLL =  sum(y) - sum(data*log(y)) # Poisson ML
+    # note this is a slightly shortened version--there's an additive constant term missing but it 
+    # makes calculation faster and won't alter the threshold. Alternatively, can do:
+  # NLL = -sum(log(dpois(round(data),round(y)))) # the round is b/c Poisson is for (integer) count data
+    # this can also barf if data and y are too far apart because the dpois will be ~0, which makes the log angry
+  
+  # ML using normally distributed measurement error (least squares)
+  # NLL = -sum(log(dnorm(data,y,0.1*mean(data)))) # example WLS assuming sigma = 0.1*mean(data)
+  # NLL = sum((y - data)^2)  # alternatively can do OLS but note this will mess with the thresholds 
+  #                             for the profile! This version of OLS is off by a scaling factor from
+  #                             actual LL units.
+  
+  # return(NLL) 
+}
+
+res = optim(params,fn=SIRML,times=times,data=cases)#,method='Nelder-Mead')
+paramests = res$par
+
+xest = ode(x0fun(cases,paramests), times, SIRode, paramests, method='ode45')
+```
+
+Estimate the parameters again, and plot your model fit to the data---you should get parameter estimates and a plot something like this (in this case using Poisson maximum likelihood, but you can try other likelihood structures if you'd rather!):
+```{r plotest}
+print(paramests)
+plot(times, yfun(xest,paramests), type='l')
+points(dataset)
+```
+
+## 3) Evaluating identifiability using the FIM
+
+Next, we'll use the rank of the Fisher information matrix (FIM) to evaluate the identifiability of the model. The function `MiniFisher` in **MiniFisher.R** will generate the simplified form of the FIM, \(X^T X\), which we often use to evaluate identifiability (where \(X\) is your output sensitivity matrix). We can calculate the FIM as follows:
+
+```{r FIM}
+# Calculate the FIM
+FIM = MiniFisher(times,paramests,x0fun2,SIRode,yfun,cases)
+```
+
+Now, we can calulate the rank:
+
+```{r FIMrank}
+# Calculate the rank
+# qr(FIM)$rank
+rankMatrix(FIM)[1]
+```
+
+What does this tell us about the identifiability of the model? Try it out with the other un-scaled SIR model given in Part 1) above (or you can use the un-scaled SIR from the parameter estimation lab)---how does that change things?
+
+Note: You can use `MiniFisher` for this problem, but I strongly recommend at least looking at the code in `MiniFisher`, or better yet, re-coding it yourself to really see how one would calculate a sensitivity matrix, etc. Also, `MiniFisher` uses a numerical approximation of the derivative---Ariel Cintron Arias' slides [here](http://www.nimbios.org/wordpress-training/parameter/wp-content/uploads/sites/14/2014/03/ols_sir_lecture.pdf) give a nice introduction to estimation and sensitivity equations using the forward sensitivity equations instead. 
+
+
+## 4) Profile-likelihood-based confidence intervals
+
+Next, we'll calculate profile likelihoods of the parameters and evaluate their identifiability and confidence bounds. Generate profile likelihoods for each of your model parameters (\(\beta, \gamma\), and \(\kappa\). You can play with the range to profile the parameters over, but something like \(\pm25\%\) will likely work well. 
+
+For the threshold to use in determining your confidence intervals, we note that \(2 (NLL(p) - NLL(\hat{p}) )\) (where \(NLL\) is the negative log likelihood) is approximately \(\chi^2\) distributed with degrees of freedom equal to the number of parameters fitted (including the profiled parameter). Then an approximate 95% (for example) confidence interval for \(p\) can be made by taking all values of \(p\) that lie within the 95th percentile range of the \(\chi^2\) distribution for the given degrees of freedom. 
+
+In this case, for a 95% confidence interval, we have three total parameters we are estimating (\(\beta, \gamma\), and \(\kappa\)), so the \(\chi^2\) value for the 95th percentile is 7.8147. Then the confidence interval is any \(p\) such that:
+\[NLL(p) \leq NLL(\hat{p}) + 7.8147/2\]
+In other words, our threshold is \(NLL(\hat{p}) + 7.8147/2 = NLL(\hat{p}) + 3.9074\), where \(NLL(\hat{p})\) is the cost function value at our parameter estimates from 2).
+
+We can set the confidence interval threshold and range for the profiles like this:
+```{r profsettings}
+threshold = qchisq(0.95,length(paramests))/2 + res$value #threshold for confidence intervals
+perrange = 0.25 #percent range for profile to run across
+```
+
+Now let's generate and plot the profiles. Are your parameters practically identifiable? What are the 95% confidence intervals for your parameters?
+```{r profiles, message=FALSE, warning=FALSE}
+profiles = list()
+for (i in 1:length(paramests)){
+  #generate profile
+  profiles[[i]] = ProfLike(paramests,i,SIRML,times,cases,perrange=perrange)
+  
+  #plot profile
+  plot(profiles[[i]]$profparvals, profiles[[i]]$fnvals, type='l',
+       xlab=names(params)[i], ylab="Negative Log Likelihood",
+       ylim=c(min(profiles[[i]]$fnvals),max(c(profiles[[i]]$fnvals,threshold))))
+  points(paramests[i], res$value)
+  abline(h=threshold, col="red", lty="dashed")
+  
+  #plot parameter relationships
+  # matplot(profiles[[i]]$profparvals, profiles[[i]]$paramestvals, type='l',xlab=names(params)[i],ylab="Estimated Parameter Value")
+  # points(paramests[i], paramests)
+  # legend("topleft",inset=.05,names(params),col=1:length(params),cex=0.8,fill=seq_len(length(params)))
+}
+```
+
+## 5) Practical Unidentifiability Issues and Early Epidemic Data
+Lastly, let us consider the case where you are attempting to fit and forecast an ongoing epidemic (i.e. with incomplete data). Truncate your data to only include the first seven data points (i.e. just past the peak), then re-fit the model parameters and generate the profile likelihoods with the truncated data (you can also see if truncating the data affects the FIM rank!). 
+
+- How do your parameter estimates change?
+
+- Does the practical identifiability of the parameters change? How so?
+
+- If any of the parameters were unidentifiable, examine the relationships between parameters that are generated in the profile likelihoods. Can you see any interesting relationships between parameters? What do you think might be going on---why has the identifiability changed?
+
+
+
+## 6) Optional Problem: Un-scaled SIR model
+Re-do the FIM and/or profile likelihoods using one of the un-scaled SIR model structures we've looked at. This time, plot the parameter relationships from the profiles---do you see anything indicative of identifiable combinations? One note---the profiles may take a long time to run, and you may need to adjust the settings.
+

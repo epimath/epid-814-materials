@@ -64,15 +64,14 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 - [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
-- Identifiability and uncertainty lab
-<!--[Identifiability and uncertainty Lab](Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)-->
+- [Identifiability and uncertainty Lab](Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)
 
 <br>
 
 
 ##### 4. Intro to MCMC & Bayesian approaches
 
-- Intro to Bayesian Approaches to Parameter Estimation <!-- - [Lecture](Lectures/BayesianEstimation.pdf)-->
+- Intro to Bayesian Approaches to Parameter Estimation - [Lecture](Lectures/BayesianEstimation.pdf)
 
 - MCMC Introduction and Lab <!-- - [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)-->
 
