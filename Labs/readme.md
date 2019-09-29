@@ -6,6 +6,12 @@
 - [Parameter Estimation Lab](EstimationLab/)
 
 - [Identifiability & Uncertainty Lab](IdentifiablilityUncertaintyLab/)
+    - [MiniFisher.R](IdentifiablilityUncertaintyLab/MiniFisher.R)
+    - [ProfLike.R](IdentifiablilityUncertaintyLab/ProfLike.R)
+
+- [Metropolis Sampler](MetropolisSampler/MetropolisSampler.html)
+
+- [BayesianTools Lab](BayesianToolsLab/BayesianTools.html)
 
 
 

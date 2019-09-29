@@ -71,16 +71,16 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 ##### 4. Intro to MCMC & Bayesian approaches
 
-- Intro to Bayesian Approaches to Parameter Estimation - [Lecture](Lectures/BayesianEstimation.pdf)
+- Intro to Bayesian Approaches to Parameter Estimation, MCMC - [Lecture](Lectures/BayesianEstimation.pdf)
 
-- MCMC Introduction and Lab <!-- - [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)-->
+- [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)
 
 
 <br>
 
 ##### 5. Digging in to Bayesian estimation for mathematical models
 
-- BayesianTools Lab <!--[BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html)-->
+- [BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html)
 
 <br>
 
@@ -93,6 +93,8 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 - [Another tutorial](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
 
 - [Mapping with ggplot](http://zevross.com/blog/2014/07/16/mapping-in-r-using-the-ggplot2-package/)
+
+- [ggdag & dagitty](https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-ggdag.html)
 
 <br>
 
