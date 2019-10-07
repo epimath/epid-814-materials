@@ -115,7 +115,7 @@ for(i in 1:numsteps){
   }
   
   # A little side note, if acceptratio >=1 then runif will always be less, so we can simplify the above like this:
-  # if(runif(1)<acceptratio){mu.curr = mu.next} 
+  # if(runif(1)<acceptratio){mu.curr = mu.next}
   # This is only one line, although now we're doing an runif on every run (not clear if that's faster/slower than the above code)
   
 }

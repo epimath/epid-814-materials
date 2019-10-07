@@ -1,0 +1,39 @@
+---
+title: "ggrepel Example"
+author: "Marisa Eisenberg"
+date: "10/3/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### ggrepel - sensible label placement!
+
+Data from:
+
+- [Wikipedia State Income Data](https://en.wikipedia.org/wiki/List_of_U.S._states_by_income)
+
+- [Wikipedia Life Expectancy Data](https://en.wikipedia.org/wiki/List_of_U.S._states_by_life_expectancy)
+
+```{r}
+library(ggplot2)
+library(ggrepel)
+
+IncomeData = read.csv('Datasets/StateIncomeData.csv')
+IncomeData = IncomeData[order(IncomeData$State),]
+
+LifespanData = read.csv('Datasets/StateLifeExpectancy.csv')
+LifespanData = LifespanData[order(LifespanData$State),]
+
+PlotData = data.frame('State' = IncomeData$State, 'Income' = IncomeData$Median.household.income, 'Lifespan' = LifespanData$Life.Expectancy)
+
+ShortPlotData = PlotData[1:30,]
+
+ggplot(ShortPlotData) +
+  geom_point(aes(Income,Lifespan), size = 4, color = 'steelblue') +
+  geom_label_repel(aes(Income,Lifespan, label = State))
+```
+
+

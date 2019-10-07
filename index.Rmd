@@ -86,7 +86,9 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 ##### 6. Visualization with ggplot2
 
-- Intro to ggplot and collection of examples <!--[Lab - our collection of ggplot examples](Labs/ggplotExamples/)-->
+- Intro to ggplot and collection of examples: [Lab - our collection of ggplot examples](Labs/ggplotExamples/BasicExamples.html)
+
+- [ggrepel example](Labs/ggplotExamples/ggRepelExample.html)
 
 - [Nice ggplot tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
 

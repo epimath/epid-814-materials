@@ -14,6 +14,9 @@
 - [BayesianTools Lab](BayesianToolsLab/BayesianTools.html)
 
 
+- [ggplot Day!](ggplotExamples/BasicExamples.html)
+
+
 
 **Ongoing Examples and Data Sets**
 
