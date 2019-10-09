@@ -103,6 +103,8 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 ##### 7. Data-scraping and data-wrangling 
 (moved this up since it might be useful for making data sets we can play with for the ML and networks sections below)
 
+- [Twitter data collection lab](Labs/DataScrapingPart1-Twitter/DataScraping-Twitter.html)
+
 - Using R to pull data using API's - Twitter, Facebook, and Google Maps
 
 - Collecting and working with twitter data

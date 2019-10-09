@@ -16,6 +16,8 @@
 
 - [ggplot Day!](ggplotExamples/BasicExamples.html)
 
+- [Twitter data API Lab](DataScrapingPart1-Twitter/DataScraping-Twitter.html)
+
 
 
 **Ongoing Examples and Data Sets**
