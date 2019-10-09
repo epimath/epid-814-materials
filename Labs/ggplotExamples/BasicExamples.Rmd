@@ -54,15 +54,15 @@ ggplot(YemenData, aes(x=Date, y=Deaths)) + geom_point() + geom_smooth(method = '
 
 #### Slightly fancier plots
 
-Let's add some more variables and specify the colors! We can also make a variable to hold the plot (in this case `yemenplot`) so we can add things later on. If we make `yemenplot` a variable, then we'll need to use `print(yemenplot)` to display the plot at the end.
+Let's add some more variables and specify the colors! We can also make a variable to hold the plot (in this case `choleraplot`) so we can add things later on. If we make `choleraplot` a variable, then we'll need to use `print(choleraplot)` to display the plot at the end.
 
 ```{r betterplots}
-yemenplot = ggplot(YemenData) + 
+choleraplot = ggplot(YemenData) + 
   geom_point(aes(x=Date, y=Deaths), color = 'steelblue') +
   geom_smooth(aes(x=Date, y=Deaths), method = 'loess') +
   geom_point(aes(x=Date, y=Cases), color = 'grey') +
   geom_smooth(aes(x=Date, y=Cases), color = 'black', method = 'loess')
-print(yemenplot)
+print(choleraplot)
 ```
 
 <br>
@@ -70,8 +70,8 @@ print(yemenplot)
 Looks nice, but the axis labels aren't quite right, and we let's add a title. We'll do that with the `labs` function:
 
 ```{r labels}
-yemenplot = yemenplot + labs(title="Yemen Cholera Epidemic", x="Date", y="Number of Individuals")
-print(yemenplot)
+choleraplot = choleraplot + labs(title="Yemen Cholera Epidemic", x="Date", y="Number of Individuals")
+print(choleraplot)
 ```
 
 <br>
@@ -81,23 +81,23 @@ print(yemenplot)
 Now, we need a figure legend! Can make it appear automatically by defining the color in `aes`. 
 
 ```{r legend}
-yemenplot = ggplot(YemenData) + 
+choleraplot = ggplot(YemenData) + 
   geom_point(aes(x=Date, y=Deaths, color = 'Deaths')) +
   #geom_smooth(aes(x=Date, y=Deaths), color = 'Deaths', method = 'loess') +
   geom_point(aes(x=Date, y=Cases, color = 'Cases')) +
   #geom_smooth(aes(x=Date, y=Cases, color = 'Cases'), method = 'loess') + 
   labs(title="Yemen Cholera Epidemic", subtitle = "Data from Humanitarian Data Exchange", x="Date", y="Number of Individuals")
-print(yemenplot)
+print(choleraplot)
 ```
 
 <br>
 
 But now, the legend title is "colour". To remove the legend title or change it to something else, we can use either the `guides` or the overall figure `theme`:
 ```{r legendfixes}
-yemenplot = yemenplot + guides(color = guide_legend(''))
+choleraplot = choleraplot + guides(color = guide_legend(''))
   # theme(legend.title=element_blank())
   # guides(color = guide_legend('Legend Title!'))
-print(yemenplot)
+print(choleraplot)
 ```
 
 <br>
@@ -106,17 +106,17 @@ print(yemenplot)
 
 Change the color scheme:
 ```{r colorscheme}
-yemenplot = yemenplot + scale_colour_brewer(palette = "Set1")
-print(yemenplot)
-# yemenplot = yemenplot + scale_colour_brewer(palette = "Set2")
-# print(yemenplot)
+choleraplot = choleraplot + scale_colour_brewer(palette = "Set1")
+print(choleraplot)
+# choleraplot = choleraplot + scale_colour_brewer(palette = "Set2")
+# print(choleraplot)
 ```
 
 <br>
 
 Change the legend location:
 ```{r legendlocation}
-yemenplot + theme(legend.position="bottom")
+choleraplot + theme(legend.position="bottom")
 ```
 
 
@@ -124,12 +124,12 @@ yemenplot + theme(legend.position="bottom")
 
 Make the size of the dots = the number of deaths at that time:
 ```{r dotsize}
-yemenplot = ggplot(YemenData) + 
+choleraplot = ggplot(YemenData) + 
   geom_point(aes(x=Date, y=Cases, color = 'Cases', size = Deaths)) +
   geom_smooth(aes(x=Date, y=Cases), color = 'red') + 
   labs(title="Yemen Cholera Epidemic", subtitle = "Data from Humanitarian Data Exchange", x="Date", y="Number of Individuals") +
   guides(color = guide_legend(''))
-print(yemenplot)
+print(choleraplot)
 ```
 
 
@@ -137,12 +137,12 @@ print(yemenplot)
 There are pre-built themes that set a lot of the plot aesthetics, and more available with the `ggthemes` package (see [here](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)).
 
 ```{r themes}
-yemenplot+theme_minimal()
-yemenplot+theme_classic()
+choleraplot+theme_minimal()
+choleraplot+theme_classic()
 
 library(ggthemes)
-yemenplot+theme_tufte()
-yemenplot+theme_fivethirtyeight()
+choleraplot+theme_tufte()
+choleraplot+theme_fivethirtyeight()
 ```
 
 #### Panel Plots
@@ -189,5 +189,5 @@ Lastly, to save your plot as a file, you can use `ggsave`:
 ```{r saving}
 # Saving
 ggsave("plotexample.png")  # saves the last plot
-ggsave("plotexample.pdf", plot=yemenplot)  # save a specific plot
+ggsave("plotexample.pdf", plot=choleraplot)  # save a specific plot
 ```
