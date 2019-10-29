@@ -114,11 +114,10 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 <br>
 
 ##### 8. Basic intro to some useful algorithms/machine learning methods
-- Introduction, definitions, jargon
-- K-means clustering
-- Support vector machines
-- Singular value decomposition (possibly a little linear algebra review also?)
-- Basic neural networks
+- Overall topics of interest: k-means clustering, support vector machines, singular value decomposition (possibly a little linear algebra review also?), basic neural networks
+- 10/28/19 [Clustering Methods Lecture](Lectures/Clustering.pdf)
+    - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm)
+- 10/30/19 Journal club topic: [Dissecting racial bias in an algorithm used to manage the health of populations](https://science.sciencemag.org/content/366/6464/447/tab-pdf)
 
 <br>
 

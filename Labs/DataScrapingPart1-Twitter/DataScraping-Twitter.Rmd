@@ -34,8 +34,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
  
 ## Using APIs with R
-- Many R packages to make this easier: rtweet
-    + `twitteR`, `Rfacebook`, `googleAuthR`, `googleAnalyticsR`... 
+- Many R packages to make this easier: 
+    + `rtweet`,`twitteR`, `Rfacebook`, `googleAuthR`, `googleAnalyticsR`... 
 - Directly using R
 <br>
 - Python also has very comprehensive libraries (many directly developed by the companies)
