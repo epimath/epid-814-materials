@@ -115,15 +115,14 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 ##### 8. Basic intro to some useful algorithms/machine learning methods
 - Overall topics of interest: k-means clustering, support vector machines, singular value decomposition (possibly a little linear algebra review also?), basic neural networks
-- 10/28/19 [Clustering Methods Lecture](Lectures/Clustering.pdf)
+- [Clustering Methods Lecture](Lectures/Clustering.pdf)
     - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm)
     - [Another overview of DBSCAN and some of its variants](https://cran.r-project.org/web/packages/dbscan/vignettes/dbscan.pdf)
-- 10/30/19 Journal club topic: [Dissecting racial bias in an algorithm used to manage the health of populations](https://science.sciencemag.org/content/366/6464/447/tab-pdf)
 - [Clustering Lab](Labs/clustering.R)
 - Other useful tutorials:
     - [Nice/clear tutorial](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
     - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
-    
+
 <br>
 
 ##### 9. Network analysis and network modeling
@@ -142,10 +141,15 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 
 <br>
 
-##### 11. Additional Topics/possible journal club days
+##### 11. Additional Topics
 - Game theory and modeling behavior
 - Spatial statistics and spatial/spatiotemporal clustering
 - Analysis/wrangling of text data
 - Optimization algorithms
 - Agent-based modeling
 
+<br>
+
+##### 12. Journal Club Topics
+- 10/30/19 Journal club topic: [Dissecting racial bias in an algorithm used to manage the health of populations](https://science.sciencemag.org/content/366/6464/447/tab-pdf)
+- 11/6/19 Journal club: [Measles virus infection diminishes preexisting antibodies that offer protection from other pathogens](https://science.sciencemag.org/content/366/6465/599/tab-pdf)
