@@ -122,6 +122,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 - Other useful tutorials:
     - [Nice/clear tutorial](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
     - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
+- [Classification](Labs/Classification.pdf)
 
 <br>
 
