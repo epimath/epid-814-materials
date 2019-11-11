@@ -154,3 +154,6 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 ##### 12. Journal Club Topics
 - 10/30/19 Journal club topic: [Dissecting racial bias in an algorithm used to manage the health of populations](https://science.sciencemag.org/content/366/6464/447/tab-pdf)
 - 11/6/19 Journal club: [Measles virus infection diminishes preexisting antibodies that offer protection from other pathogens](https://science.sciencemag.org/content/366/6465/599/tab-pdf)
+- 11/13/19 Journal Club:
+    - [Welcome to the Party: A Data Analysis of Chinese Information Operations](https://medium.com/digintel/welcome-to-the-party-a-data-analysis-of-chinese-information-operations-6d48ee186939)
+    - [Vaping on Instagram: cloud chasing, hand checks and product placement](https://tobaccocontrol.bmj.com/content/26/5/575.short)
