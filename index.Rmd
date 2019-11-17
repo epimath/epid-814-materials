@@ -124,7 +124,7 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
         - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
 - [Classification](Lectures/Classification.pdf)
 - [Lab: Naive Bayes classification with twitter data](Labs/ClassifierLab/TwitterNaiveBayes.html)
-    - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata)
+    - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata)
     - Other useful tutorials
         - [Naive Bayes in R for movie reviews](https://rpubs.com/cen0te/naivebayes-sentimentpolarity)
         - [Naive Bayes with Titanic survivorship](https://www.r-bloggers.com/understanding-naive-bayes-classifier-using-r/)
