@@ -18,7 +18,7 @@
 
 - [Twitter data API Lab](DataScrapingPart1-Twitter/DataScraping-Twitter.html)
 
-
+(I've gotten lazy about updating this, just use the main page)
 
 **Ongoing Examples and Data Sets**
 

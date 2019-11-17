@@ -8,3 +8,5 @@
 - [Bayesian Estimation](BayesianEstimation.pdf)
 
 - [Clustering](Clustering.pdf)
+
+- [Classification](Classfication.pdf)

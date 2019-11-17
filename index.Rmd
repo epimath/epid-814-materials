@@ -119,10 +119,17 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
     - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm)
     - [Another overview of DBSCAN and some of its variants](https://cran.r-project.org/web/packages/dbscan/vignettes/dbscan.pdf)
 - [Clustering Lab](Labs/clustering.R)
-- Other useful tutorials:
-    - [Nice/clear tutorial](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
-    - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
+    - Other useful tutorials:
+        - [Cluster analysis in R](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
+        - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
 - [Classification](Lectures/Classification.pdf)
+- [Lab: Naive Bayes classification with twitter data](Labs/ClassifierLab/TwitterNaiveBayes.html)
+    - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata)
+    - Other useful tutorials
+        - [Naive Bayes in R for movie reviews](https://rpubs.com/cen0te/naivebayes-sentimentpolarity)
+        - [Naive Bayes with Titanic survivorship](https://www.r-bloggers.com/understanding-naive-bayes-classifier-using-r/)
+        - [Naive Bayes Overview](https://uc-r.github.io/naive_bayes) - includes more details on cross validation, confusion matrices, Laplace smoother, etc.
+
 
 <br>
 
