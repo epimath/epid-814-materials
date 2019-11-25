@@ -138,7 +138,13 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
     - Review of network concepts (centrality, modularity, etc.)
     - Network simulation methods (Barabasi-Albert, Erdos-Renyi, etc.)
     - Configuration models
-- Build example network simulation models (e.g. infection/behavior spread on a network)
+- Network data sets
+    - [Mark Newman’s list of data sets](http://www-personal.umich.edu/~mejn/netdata/)
+    - [UC Irvine Network Data Repository](https://networkdata.ics.uci.edu/)
+    - [Facebook social network data from kaggle](https://www.kaggle.com/c/FacebookRecruiting/data)
+    - [Colorado network data set](https://icon.colorado.edu/#!/about)
+    - [Transitland](https://transit.land): transit data for major cities and visualization packages for it: [transitland github](https://github.com/transitland/transitland-processing-animation), [visualizations 1](https://vimeopro.com/willgeary/transit-flows), [more visualizations](https://mapzen.com/blog/animating-transitland/)
+
 
 <br>
 
