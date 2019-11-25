@@ -134,9 +134,10 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 <br>
 
 ##### 9. Network analysis and network modeling
-- Review of network concepts (centrality, modularity, etc.)
-- Network simulation methods (Barabasi-Albert, Erdos-Renyi, etc.)
-- Configuration models
+- [Networks lecture](Lectures/Networks.pdf)
+    - Review of network concepts (centrality, modularity, etc.)
+    - Network simulation methods (Barabasi-Albert, Erdos-Renyi, etc.)
+    - Configuration models
 - Build example network simulation models (e.g. infection/behavior spread on a network)
 
 <br>
