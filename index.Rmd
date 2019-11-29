@@ -171,3 +171,4 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 - 11/13/19 Journal Club:
     - [Welcome to the Party: A Data Analysis of Chinese Information Operations](https://medium.com/digintel/welcome-to-the-party-a-data-analysis-of-chinese-information-operations-6d48ee186939)
     - [Vaping on Instagram: cloud chasing, hand checks and product placement](https://tobaccocontrol.bmj.com/content/26/5/575.short)
+- 12/2/19 Journal club: [The dynamic nature of contact networks in infectious disease epidemiology](https://www.tandfonline.com/doi/full/10.1080/17513758.2010.503376)
