@@ -14,6 +14,8 @@ body{ /* Normal  */
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+The course website is still in progress! To be updated over the weekend...
+
 ## Course Materials 
 
 [Epid814_SyllabusF2021.pdf](Course Syllabus)
@@ -152,10 +154,10 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 - Agent-based modeling
 
 <br>
+
+
+##### 12. Journal Club Topics
+
+
 -->
-
-##### 2. Journal Club Topics
-
-
-
 
