@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Course Materials 
 
+[Epid814_SyllabusF2021.pdf](Course Syllabus)
+
 Organized by type:
 
 * [Readings](Readings/)
@@ -27,34 +29,20 @@ Organized by type:
 <hr>
 
 ## Course schedule
-Topics are subject to change and rearrangement! (We may also not get to all the topics listed)
+To be added after the initial topic discussion on Monday. Topics are subject to change and rearrangement! (We may also not get to all the topics listed)
 
 <br>
 
-##### 1. Parameter estimation and maximum likelihood (9/9/19 and 9/11/19)
+[](Topics list for discussion - please feel free to add! We will discuss on Monday)
+
+<br>
+
+<!--
+##### 1. Parameter estimation and maximum likelihood
 
 - Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf) (9/9/2019)
 
 - Parameter estimation coding session - [Lab](Labs/EstimationLab/) (9/11/2019)
-
-<br>
-
-##### 2. Math modeling how-to workshop (9/16/19)
-- Main ideas
-
-    - **How to go from a question to a diagram to equations to code?**
-
-    - What kind of model to use under different circumstances?
-   
-- **To Do**: Everyone bring a specific question that they might want to use a model to answer, and we'll workshop it together for the 9/16/19 class. 
-    
-    - Think about what knowledge about the system you have---what are the causal processes? What features/variables/processes might be important to include to answer your question? What do you think we might be able to ignore or simplify out?
-
-    - Also, if you think you might want to estimate parameters for the model, think a about what kind of data you might want to use! What can you measure/observe, e.g. through epidemiological studies or biological experiments?
-
-- We will go through each question/problem together and discuss how we might build a model that can answer that question, what the assumptions and limitations of different kinds of models are, etc.
-
-- [Discussion prompts](Lectures/modelingworkshop.md)
 
 <br>
 
@@ -164,11 +152,10 @@ Topics are subject to change and rearrangement! (We may also not get to all the 
 - Agent-based modeling
 
 <br>
+-->
 
-##### 12. Journal Club Topics
-- 10/30/19 Journal club topic: [Dissecting racial bias in an algorithm used to manage the health of populations](https://science.sciencemag.org/content/366/6464/447/tab-pdf)
-- 11/6/19 Journal club: [Measles virus infection diminishes preexisting antibodies that offer protection from other pathogens](https://science.sciencemag.org/content/366/6465/599/tab-pdf)
-- 11/13/19 Journal Club:
-    - [Welcome to the Party: A Data Analysis of Chinese Information Operations](https://medium.com/digintel/welcome-to-the-party-a-data-analysis-of-chinese-information-operations-6d48ee186939)
-    - [Vaping on Instagram: cloud chasing, hand checks and product placement](https://tobaccocontrol.bmj.com/content/26/5/575.short)
-- 12/2/19 Journal club: [The dynamic nature of contact networks in infectious disease epidemiology](https://www.tandfonline.com/doi/full/10.1080/17513758.2010.503376)
+##### 2. Journal Club Topics
+
+
+
+

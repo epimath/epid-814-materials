@@ -1,7 +1,9 @@
 
 ## Lectures
 
-- [Introduction to Parameter Estimation and Maximum Likelihood](ParameterEstimationML.pdf)
+To be added soon!
+
+<!-- - [Introduction to Parameter Estimation and Maximum Likelihood](ParameterEstimationML.pdf)
 
 - [Identifiability and Parameter Uncertainty](IdentifiabilityUncertainty.pdf)
 
@@ -9,4 +11,4 @@
 
 - [Clustering](Clustering.pdf)
 
-- [Classification](Classfication.pdf)
+- [Classification](Classfication.pdf) -->

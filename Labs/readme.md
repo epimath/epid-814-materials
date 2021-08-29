@@ -1,7 +1,9 @@
 
 ## Labs and Code for Epid 814
 
-**Labs**
+To be added soon!
+
+<!-- **Labs**
 
 - [Parameter Estimation Lab](EstimationLab/)
 
@@ -24,4 +26,4 @@
 
 
 **Additional Useful links**
-- We'll also use code and data from the [Epimath parameter estimation tutorial repository](https://github.com/epimath/param-estimation-SIR)
+- We'll also use code and data from the [Epimath parameter estimation tutorial repository](https://github.com/epimath/param-estimation-SIR) -->

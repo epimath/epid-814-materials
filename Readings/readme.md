@@ -1,7 +1,9 @@
 
 ## Readings
 
-- [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
+To be added soon!
+
+<!-- - [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
 - ggplot tutorials
 	+ [Nice, comprehensive ggplot tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
@@ -42,4 +44,4 @@
 
 	+ [Morris and Mitchell, 1995](https://epimath.github.io/epid-814-materials/Readings/Morris1995LHS.pdf)
 
-- [Useful Agent Based Modeling Resources](https://github.com/mjbommar/cscs-530-w2015)
+- [Useful Agent Based Modeling Resources](https://github.com/mjbommar/cscs-530-w2015) -->
