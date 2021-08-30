@@ -1,6 +1,7 @@
 ---
 title: "Epid 814 - Advanced Modeling Methods"
 author: "Instructor: Marisa Eisenberg"
+date: "Fall 2021"
 output: html_document
 ---
 <style type="text/css">
@@ -14,13 +15,10 @@ body{ /* Normal  */
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The course website is still in progress! To be updated over the weekend...
 
 ## Course Materials 
 
-[Epid814_SyllabusF2021.pdf](Course Syllabus)
-
-Organized by type:
+* [Course Syllabus](Epid814_SyllabusF2021.pdf)
 
 * [Readings](Readings/)
 
@@ -35,14 +33,14 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 1. Introduction and topics discussion 
+##### 1. Introduction and topics discussion (30 Aug 2021)
 
 [List of potential topics to cover in the course - please feel free to add! We will discuss on Monday](https://docs.google.com/spreadsheets/d/1-vmib4ApYCiLnRk9hxL5HltT4W-hrvrIUlfCAs9uZJ4/edit#gid=0)
 
 <br>
 
 <!--
-##### 1. Parameter estimation and maximum likelihood
+##### 1. Parameter estimation and maximum likelihood 
 
 - Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf) (9/9/2019)
 
