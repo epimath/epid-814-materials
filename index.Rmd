@@ -161,3 +161,6 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 -->
 
+
+##### Useful Links
+- [EECS 545 (Machine Learning)](https://ece.engin.umich.edu/academics/course-information/course-descriptions/eecs-545/) - online course with a good overview of machine learning approaches
