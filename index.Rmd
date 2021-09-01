@@ -45,11 +45,9 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 ##### 2. Parameter estimation and maximum likelihood 
 
-- Maximum likelihood with complex systems models
-<!-- - Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf) -->
+- Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf)
 
-- Parameter estimation coding session
-<!-- - Parameter estimation coding session - [Lab](Labs/EstimationLab/) -->
+- Parameter estimation coding session - [Lab](Labs/EstimationLab/)
 
 <br>
 

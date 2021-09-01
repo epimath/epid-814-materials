@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Setup
-Start by loading the relevant libraries---in this case, we'll be using `deSolve` and `plotly` (to make some contour plots later on in the lab---note that `plotly` also uses `ggplot2`). 
+Start by loading the relevant libraries---in this case, we'll be using `deSolve` (to simulate the ODE) and `plotly` (to make some contour plots later on in the lab---note that `plotly` also uses `ggplot2`). 
 
 
 ```{r stuff, message=FALSE}
@@ -123,7 +123,7 @@ points(dataset)
 
 <br>
 
-####Parameter Estimation
+#### Setting up the likelihood function
 Next, write code to estimate \(\beta, \gamma\), and \(\kappa\) from the given data using Poisson maximum likelihood. Use the parameter values given above as starting parameter values, and you can use the initial conditions from above as well (note though that they depend on \(\kappa\), which is a fitted parameter---so while we aren't fitting the initial conditions, they will need to change/update as we fit the parameters!). This means you will need to update your initial conditions inside the cost function, so MATLAB/R uses the updated initial conditions when it tries new parameter values.
 <br>
 
@@ -155,6 +155,10 @@ SIRML=function(params,times,data){
 ```
 Make sure you understand what each line does and why!
 
+<br>
+
+
+#### Estimate the parameters with `optim`
 Armed with our likelihood function, we can now estimate the model parameters from the data:
 ```{r paramest, message=FALSE, warning=FALSE}
 res = optim(params,fn=SIRML,times=times,data=cases)#,method='Nelder-Mead')
@@ -163,12 +167,14 @@ paramests = res$par
 
 Finally, let's the data together with our model using the parameter estimates we found. First we have to re-simulate the model using the parameter estimate values, otherwise we just have parameter estimates but no way to see what the fit looks like!
 ```{r simest}
-xest = ode(x0fun(cases,paramests), times, SIRode, paramests, method='ode45')
+# xest = ode(x0fun(cases,paramests), times, SIRode, paramests, method='ode45')
+xest = ode(x0fun(cases,paramests), 0:100, SIRode, paramests, method='ode45') 
+   # note I changed the times to make the line a bit smoother
 ```
 
 Now let's plot---based on the `eyeball test', how well does the model fit the data? 
 ```{r plotest}
-plot(times, yfun(xest,paramests), type='l')
+plot(xest[,1], yfun(xest,paramests), type='l')
 points(dataset)
 ```
 
@@ -195,7 +201,7 @@ How do the parameter estimates and/or uncertainty differ from the estimates you 
 
 <br>
 
-####Examining the likelihood shape
+#### Examining the likelihood shape
 The recovery rate \(\gamma\) is often approximately known, so let's fix the value of \(\gamma = 0.25\). Now we have two unknown parameters, \(\beta\) and \(\kappa^{-1}\). Plot the likelihood as a surface or heat map as a function of \(\beta\) and \(\kappa\) (i.e. so that color is the likelihood value, and your x and y axes are the \(\beta\) and \(\kappa\) values respectively. How does the shape of the likelihood change as you switch likelihood functions? (It may not change much, but you can often notice small differences between likelihood choices.)
 
 As an example, here's some code to plot the likelihood for the Poisson case we used earlier. You can try different ranges for beta and kappa depending on how far out you want to look at the plot:
@@ -267,25 +273,25 @@ SIRode <- function(t, x, params){
 }
 ```
 
-```{r paramestUn, echo=FALSE}
-# res = optim(params,fn=SIRML,times=times,data=cases)#,method='Nelder-Mead')
-# paramests = res$par
+```{r paramestUn, echo=FALSE, eval=FALSE}
+res = optim(params,fn=SIRML,times=times,data=cases)#,method='Nelder-Mead')
+paramests = res$par
 ```
 
-```{r heatmapUn, echo=FALSE}
-# krange = seq(0.7,0.9,0.01)
-# Nrange = seq(0.9e05,1.1e05,1e3)
-# likevals = matrix(NA,nrow=length(krange),ncol=length(Nrange))
-# 
-# for (i in 1:length(krange)){
-#   for(j in 1:length(Nrange)){
-#     likevals[i,j] = SIRML(c(0.4,0.25,krange[i],Nrange[j]),times,cases)
-#   }
-# }
-# 
-# plot_ly(x = krange, y = Nrange, z = likevals, type = "contour") %>%
-#  layout(xaxis = list(title = "k"), yaxis = list(title = "N")) %>%
-#  colorbar(title = "-LL")
+```{r heatmapUn, echo=FALSE, eval=FALSE}
+krange = seq(0.7,0.9,0.01)
+Nrange = seq(0.9e05,1.1e05,1e3)
+likevals = matrix(NA,nrow=length(krange),ncol=length(Nrange))
+
+for (i in 1:length(krange)){
+  for(j in 1:length(Nrange)){
+    likevals[i,j] = SIRML(c(0.4,0.25,krange[i],Nrange[j]),times,cases)
+  }
+}
+
+plot_ly(x = krange, y = Nrange, z = likevals, type = "contour") %>%
+ layout(xaxis = list(title = "k"), yaxis = list(title = "N")) %>%
+ colorbar(title = "-LL")
 ```
 
 
