@@ -2,7 +2,11 @@
 title: "Epid 814 - Advanced Modeling Methods"
 author: "Instructor: Marisa Eisenberg"
 date: "Fall 2021"
-output: html_document
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    toc_depth: 3
 ---
 <style type="text/css">
 
@@ -39,44 +43,106 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-<!--
-##### 1. Parameter estimation and maximum likelihood 
+##### 2. Parameter estimation and maximum likelihood 
 
-- Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf) (9/9/2019)
+- Maximum likelihood with complex systems models
+<!-- - Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf) -->
 
-- Parameter estimation coding session - [Lab](Labs/EstimationLab/) (9/11/2019)
+- Parameter estimation coding session
+<!-- - Parameter estimation coding session - [Lab](Labs/EstimationLab/) -->
 
 <br>
 
 ##### 3. Uncertainty and identifiability
 
-- Identifiability and parameter uncertainty - [Lecture](Lectures/IdentifiabilityUncertainty.pdf) 
+- Identifiability and parameter uncertainty <!-- - [Lecture](Lectures/IdentifiabilityUncertainty.pdf) -->
 
 - [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
-- [Identifiability and uncertainty Lab](Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html)
+- [Identifiability and uncertainty Lab]<!--(Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html) --->
 
 <br>
 
 
 ##### 4. Intro to MCMC & Bayesian approaches
 
-- Intro to Bayesian Approaches to Parameter Estimation, MCMC - [Lecture](Lectures/BayesianEstimation.pdf)
+- Intro to Bayesian Approaches to Parameter Estimation, MCMC <!-- - [Lecture](Lectures/BayesianEstimation.pdf) -->
 
-- [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)
+- [Lab - Metropolis Sampler]<!-- (Labs/MetropolisSampler/MetropolisSampler.html) -->
+
+- [BayesianTools Lab]<!-- (Labs/BayesianToolsLab/BayesianTools.html) -->
+
+<br>
+
+##### 5. Sampling-based approaches to global sensitivity analysis
+
+- Latin hypercube and Sobol sampling
+
+- Global sensitivity methods (maybe do as journal club with Marino et al. paper)
+
+- Potentially: active subspace methods, surrogate models
+
+<br>
+
+##### 6. Reproduction number - data driven approaches to $\mathcal{R}_0$ and $\mathcal{R}_t$
+
+- Quick recap: what are $\mathcal{R}_0$ and $\mathcal{R}_t$?
+
+- Serial interval approaches to calculating $\mathcal{R}_t$
+
+- Possible journal club with Royal Society review paper
+
+<br>
+
+##### 7. Reproduction number - next generation matrix approaches
+
+- The next generation matrix and thinking about the linear algebra of the next generation matrix
+
+- Maybe: type and target reproduction numbers, stochastic $\mathcal{R}_0$, $\mathcal{R}_0$ for networks
+
+<br>
+
+##### 8. Data-scraping and data-wrangling 
+(moved this up since it might be useful for making data sets we can play with for the ML and networks sections below)
+
+- [Twitter data collection lab](Labs/DataScrapingPart1-Twitter/DataScraping-Twitter.html)
+
+- Using R to pull data using API's - Twitter, Facebook, and Google Maps
+
+- Collecting and working with twitter data
+
+- An [interesting article](https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135) about the ethics of using public data and our perception of privacy
+
+<br>
+
+##### 9. Basic intro to some useful algorithms/machine learning methods
+<!-- - Overall topics of interest: k-means clustering, support vector machines, singular value decomposition (possibly a little linear algebra review also?), basic neural networks -->
+- [Clustering Methods Lecture]<!--(Lectures/Clustering.pdf)-->
+    <!-- - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm) -->
+    <!-- - [Another overview of DBSCAN and some of its variants](https://cran.r-project.org/web/packages/dbscan/vignettes/dbscan.pdf) -->
+- [Clustering Lab]<!--(Labs/clustering.R)-->
+    - Other useful tutorials:
+        - [Cluster analysis in R](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
+        - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
+- [Classification]<!-- (Lectures/Classification.pdf) -->
+- [Lab: Naive Bayes classification with twitter data]<!-- (Labs/ClassifierLab/TwitterNaiveBayes.html)-->
+    <!-- - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata) -->
+    - Other useful tutorials on Naive Bayes
+        - [Naive Bayes in R for movie reviews](https://rpubs.com/cen0te/naivebayes-sentimentpolarity)
+        - [Naive Bayes with Titanic survivorship](https://www.r-bloggers.com/understanding-naive-bayes-classifier-using-r/)
+        - [Naive Bayes Overview](https://uc-r.github.io/naive_bayes) - includes more details on cross validation, confusion matrices, Laplace smoother, etc.
 
 
 <br>
 
-##### 5. Digging in to Bayesian estimation for mathematical models
 
-- [BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html)
+##### 10. Time series analysis intro
 
 <br>
 
-##### 6. Visualization with ggplot2
+##### 11. Visualization with ggplot2
 
-- Intro to ggplot and collection of examples: [Lab - our collection of ggplot examples](Labs/ggplotExamples/BasicExamples.html), [Dataset](Labs/ggplotExamples/Datasets/YemenCholeraOutbreak.csv)
+- Intro to ggplot and collection of examples <!-- : [Lab - our collection of ggplot examples](Labs/ggplotExamples/BasicExamples.html), [Dataset](Labs/ggplotExamples/Datasets/YemenCholeraOutbreak.csv) -->
 
 - [ggrepel example](Labs/ggplotExamples/ggRepelExample.html)
 
@@ -90,38 +156,21 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 7. Data-scraping and data-wrangling 
-(moved this up since it might be useful for making data sets we can play with for the ML and networks sections below)
+##### 12. Other topics to cover if time!
 
-- [Twitter data collection lab](Labs/DataScrapingPart1-Twitter/DataScraping-Twitter.html)
+- Parallelizing code in R (maybe combine with another topic since we can do an example fairly quickly)
 
-- Using R to pull data using API's - Twitter, Facebook, and Google Maps
+- Shiny apps and interactives
 
-- Collecting and working with twitter data
+- Bootstrapping
 
-- An [interesting article](https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135) about the ethics of using public data and our perception of privacy
+- Methods for stochastic models
 
-<br>
+- Compartmental models and DAGs
 
-##### 8. Basic intro to some useful algorithms/machine learning methods
-- Overall topics of interest: k-means clustering, support vector machines, singular value decomposition (possibly a little linear algebra review also?), basic neural networks
-- [Clustering Methods Lecture](Lectures/Clustering.pdf)
-    - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm)
-    - [Another overview of DBSCAN and some of its variants](https://cran.r-project.org/web/packages/dbscan/vignettes/dbscan.pdf)
-- [Clustering Lab](Labs/clustering.R)
-    - Other useful tutorials:
-        - [Cluster analysis in R](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
-        - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
-- [Classification](Lectures/Classification.pdf)
-- [Lab: Naive Bayes classification with twitter data](Labs/ClassifierLab/TwitterNaiveBayes.html)
-    - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata)
-    - Other useful tutorials
-        - [Naive Bayes in R for movie reviews](https://rpubs.com/cen0te/naivebayes-sentimentpolarity)
-        - [Naive Bayes with Titanic survivorship](https://www.r-bloggers.com/understanding-naive-bayes-classifier-using-r/)
-        - [Naive Bayes Overview](https://uc-r.github.io/naive_bayes) - includes more details on cross validation, confusion matrices, Laplace smoother, etc.
+- And other stuff---topological data analysis, Kullback-Liebler divergence
 
-
-<br>
+<!--
 
 ##### 9. Network analysis and network modeling
 - [Networks lecture](Lectures/Networks.pdf)
@@ -155,12 +204,14 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-
-##### 12. Journal Club Topics
-
-
 -->
 
+## Journal club topics
 
-##### Useful Links
+
+
+
+## Useful Links
 - [EECS 545 (Machine Learning)](https://ece.engin.umich.edu/academics/course-information/course-descriptions/eecs-545/) - online course with a good overview of machine learning approaches
+
+<br><br><br>
