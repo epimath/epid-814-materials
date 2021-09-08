@@ -20,15 +20,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Course Materials 
+## Course Syllabus 
 
-* [Course Syllabus](Epid814_SyllabusF2021.pdf)
+* [Syllabus](Epid814_SyllabusF2021.pdf)
 
-* [Readings](Readings/)
+<!-- * [Readings](Readings/) -->
 
-* [Lectures](Lectures/)
+<!-- * [Lectures](Lectures/) -->
 
-* [Labs](Labs/)
+<!-- * [Labs](Labs/) -->
 
 <hr>
 
@@ -37,13 +37,13 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 1. Introduction and topics discussion (30 Aug 2021)
+##### 1. Introduction and topics discussion (Aug 30, 2021)
 
 [List of potential topics to cover in the course - please feel free to add! We will discuss on Monday](https://docs.google.com/spreadsheets/d/1-vmib4ApYCiLnRk9hxL5HltT4W-hrvrIUlfCAs9uZJ4/edit#gid=0)
 
 <br>
 
-##### 2. Parameter estimation and maximum likelihood 
+##### 2. Parameter estimation and maximum likelihood  (Sep 1, 2021 & Sep 8, 2021)
 
 - Maximum likelihood with mathematical models - [Lecture](Lectures/ParameterEstimationML.pdf)
 
@@ -51,9 +51,16 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
+##### Journal Club (Sep 13, 2021)
+
+- [Dissecting racial bias in an algorithm used to manage the health of populations](https://www.science.org/doi/abs/10.1126/science.aax2342)
+- Reminder to add papers and sign up to lead a journal club [here](https://docs.google.com/spreadsheets/d/1-vmib4ApYCiLnRk9hxL5HltT4W-hrvrIUlfCAs9uZJ4/edit#gid=1663288766)
+
+<br>
+
 ##### 3. Uncertainty and identifiability
 
-- Identifiability and parameter uncertainty <!-- - [Lecture](Lectures/IdentifiabilityUncertainty.pdf) -->
+- Identifiability and parameter uncertainty - [Lecture](Lectures/IdentifiabilityUncertainty.pdf) 
 
 - [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
@@ -199,14 +206,16 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 - Analysis/wrangling of text data
 - Optimization algorithms
 - Agent-based modeling
+-->
 
 <br>
 
--->
 
 ## Journal club topics
 
+- [Dissecting racial bias in an algorithm used to manage the health of populations](https://www.science.org/doi/abs/10.1126/science.aax2342)
 
+<br>
 
 
 ## Useful Links
