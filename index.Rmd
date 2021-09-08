@@ -49,6 +49,8 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 - Parameter estimation coding session - [Lab](Labs/EstimationLab/)
 
+- [Model vs. code comparison](Labs/EstimationLab/ModelNotes.pdf)
+
 <br>
 
 ##### Journal Club (Sep 13, 2021)
