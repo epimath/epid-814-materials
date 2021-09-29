@@ -20,15 +20,15 @@ set.seed(2)
 
 ### Model, Data, & Likelihood
 
-Let's build a simple MCMC sampler using the Metropolis algorithm. First, we'll set up our model. We'll suppose the data (\(z\)) comes from a normal distribution, with a known standard deviation \(\sigma = 1\):
-\[ z \sim \mathcal{N}(\mu, 1) \]
+Let's build a simple MCMC sampler using the Metropolis algorithm. First, we'll set up our model. We'll suppose the data (\(z\)) comes from a Poisson distribution, with an unknown rate \(\lambda\):
+\[ z \sim \mathcal{P}(\lambda) \]
 Then our the likelihood for a single data point \(z_i\) is given by:
-\[ P(z_i \,|\, \mu, 1) = f(z_i \,|\, \mu, 1) = \frac{1}{\sqrt{2\pi}}e^{-\frac{(z - \mu)^2}{2}}\]
+\[ P(z_i \,|\, \lambda) = f(z_i \,|\, \lambda) = \frac{\lambda^{z_i} e^{-\lambda}}{z_i!}\]
 and our overall likelihood for a full data set \(z = \{z_1,\dots, z_n\}\) is given by:
-\[ P(z \,|\, \mu) = \prod_{i=1}^n f(z_i \,|\, \mu, 1) \]
+\[ P(z \,|\, \lambda) = \prod_{i=1}^n f(z_i \,|\, \lambda) \]
 
 ```{r likelihood}
-likelihood = function(data,mu){prod(dnorm(data,mu,1))}
+likelihood = function(data,lambda){prod(dpois(data,lambda))}
 ```
 
 <br>
@@ -36,7 +36,7 @@ likelihood = function(data,mu){prod(dnorm(data,mu,1))}
 From the above model, let's simulate a little data set that we can use for parameter estimation:
 
 ```{r data}
-data = rnorm(20,2,1)
+data = rpois(20,2)
 ```
 
 <br>
@@ -47,10 +47,10 @@ Now, we need a prior for our unknown parameter \(\mu\). We'll choose a normal di
 
 ```{r prior}
 # Set up prior
-prior = function(mu){dnorm(mu,1,1.5)}
+prior = function(lambda){dnorm(lambda,1,1.5)}
 
 # Plot the prior
-plot(seq(0,5,0.1),prior(seq(0,5,0.1)),type='l',xlab="µ", ylab="density")
+plot(seq(0,5,0.1),prior(seq(0,5,0.1)),type='l',xlab="λ", ylab="density")
 ```
 
 
@@ -61,61 +61,62 @@ plot(seq(0,5,0.1),prior(seq(0,5,0.1)),type='l',xlab="µ", ylab="density")
 As we saw in class, the Metropolis algorithm for MCMC is:
 
 1. Initialization
-    + Choose a **starting point** in parameter space, say \(\mu = 5\).
-    + Decide on a **proposal distribution** to choose the next point to sample---this distribution is often somewhat arbitrary, but different choices will make it easier or harder to converge to the stationary distribution. In our case we'll choose a normal distribution with mean given by the current sampled parameter value (call this \(\mu_{curr}\)), and standard deviation of 0.5, \(\mathcal{N}(\mu_{curr}, 0.5)\).
+    + Choose a **starting point** in parameter space, say \(\lambda = 5\).
+    + Decide on a **proposal distribution** to choose the next point to sample---this distribution is often somewhat arbitrary, but different choices will make it easier or harder to converge to the stationary distribution. In our case we'll choose a normal distribution with mean given by the current sampled parameter value (call this \(\lambda_{curr}\)), and standard deviation of 0.5, \(\mathcal{N}(\lambda_{curr}, 0.5)\).
     + Decide how many samples you want to take---in our case, let's take 5000.
 
 We'll also make a variable, `samples`, to hold our MCMC samples as we go.
 
 ```{r mcmcsetup}
-mu.curr = 5 #start value for mu
+lambda.curr = 5 #start value for lambda
 proposaldist = function(paramval){rnorm(1,paramval,0.5)}
 numsteps = 5000
 samples = numeric(numsteps)
 ```
 
 2. For each iteration,
-    + Use the proposal distribution to draw a new proposed sample, \(\mu_{next}\)
+    + Use the proposal distribution to draw a new proposed sample, \(\lambda_{next}\)
   
-    + Calculate the product of the likelihood and the prior, \(P(z \,|\, \mu) \cdot P(\mu) \), for both the current and newly proposed values of \(\mu\). Note that \(P(z \,|\, \mu) \cdot P(\mu)\) is proportional to the posterior (it is just missing the denominator from Bayes' theorem), so our sampler will recover the posterior distribution.
+    + Calculate the product of the likelihood and the prior, \(P(z \,|\, \lambda) \cdot P(\lambda) \), for both the current and newly proposed values of \(\lambda\). Note that \(P(z \,|\, \lambda) \cdot P(\lambda)\) is proportional to the posterior (it is just missing the denominator from Bayes' theorem), so our sampler will recover the posterior distribution.
   
-    + Calculate the acceptance ratio, \(a = \frac{P(z \,|\, \mu_{next}) \cdot P(\mu_{next})}{P(z \,|\, \mu_{curr}) \cdot P(\mu_{curr})}\).
+    + Calculate the acceptance ratio, \(a = \frac{P(z \,|\, \lambda_{next}) \cdot P(\lambda_{next})}{P(z \,|\, \lambda_{curr}) \cdot P(\lambda_{curr})}\).
   
     + If \(a\geq 1\), the new point is as good or better than the last, and we automatically accept.
   
-    + If \(a<1\), then the new point \(\mu_{next}\) is worse. In this case, we accept the new point with probability \(a\). If it is accepted, we set `mu.curr = mu.next`. If it is not accepted, we leave `mu.curr` as is and re-draw `mu.next` in the next iteration.
+    + If \(a<1\), then the new point \(\lambda_{next}\) is worse. In this case, we accept the new point with probability \(a\). If it is accepted, we set `lambda.curr = lambda.next`. If it is not accepted, we leave `lambda.curr` as is and re-draw `lambda.next` in the next iteration.
   
-    + Also, don't forget to record your `mu.curr` samples at each iteration!
+    + Also, don't forget to record your `lambda.curr` samples at each iteration!
 
-Code the algorithm above and generate 5000 samples for \(\mu\). Here's more explicit pseudocode for 2) to help you set things up:
+Code the algorithm above and generate 5000 samples for \(\lambda\). Here's more explicit pseudocode for 2) to help you set things up:
 
 - For each iteration:
-    + Set `samples[i] = mu.curr` (i.e. record the current value of \(\mu\))
-    + Draw `mu.next` from `proposaldist`, using `mu.curr`
-    + Calculate \(likelihood*prior\) for `mu.curr`, e.g `probcurr = likelihood(data,mu.curr)*prior(mu.curr)`
-    + Calculate \(likelihood*prior\) for `mu.next` (let's call this `probnext`)
+    + Set `samples[i] = lambda.curr` (i.e. record the current value of \(\lambda\))
+    + Draw `lambda.next` from `proposaldist`, using `lambda.curr`
+    + Calculate \(likelihood*prior\) for `lambda.curr`, e.g `probcurr = likelihood(data,lambda.curr)*prior(lambda.curr)`
+    + Calculate \(likelihood*prior\) for `lambda.next` (let's call this `probnext`)
     + Set `acceptratio` equal to `probnext/probcurr`
-    + If `acceptratio >= 1`, accept `mu.next`---in other words, set `mu.curr = mu.next`
-    + If `acceptratio < 1`, then accept `mu.next` with probability `acceptratio` (i.e. if `runif(1)<acceptratio`)
+    + If `acceptratio >= 1`, accept `lambda.next`---in other words, set `lambda.curr = lambda.next`
+    + If `acceptratio < 1`, then accept `lambda.next` with probability `acceptratio` (i.e. if `runif(1)<acceptratio`)
 
 ```{r mcmc, echo=FALSE}
 for(i in 1:numsteps){
-  samples[i] = mu.curr
-  mu.next = proposaldist(mu.curr)
+  samples[i] = lambda.curr
+  lambda.next = max(proposaldist(lambda.curr),0) 
+  # setting a little boundary at zero, because otherwise the likelihood will barf if you feed it a negative value for lambda.next, but really you should just incorporate this into your prior (i.e. make it a truncated normal)
   
-  probcurr = likelihood(data,mu.curr)*prior(mu.curr)
-  probnext = likelihood(data,mu.next)*prior(mu.next)
+  probcurr = likelihood(data,lambda.curr)*prior(lambda.curr)
+  probnext = likelihood(data,lambda.next)*prior(lambda.next)
   
   acceptratio = probnext/probcurr
   
   if(acceptratio >= 1){
-    mu.curr = mu.next
+    lambda.curr = lambda.next
   } else if(runif(1)<acceptratio){
-      mu.curr = mu.next
+      lambda.curr = lambda.next
   }
   
   # A little side note, if acceptratio >=1 then runif will always be less, so we can simplify the above like this:
-  # if(runif(1)<acceptratio){mu.curr = mu.next}
+  # if(runif(1)<acceptratio){lambda.curr = lambda.next}
   # This is only one line, although now we're doing an runif on every run (not clear if that's faster/slower than the above code)
   
 }
@@ -128,7 +129,7 @@ for(i in 1:numsteps){
 Next, plot the chain---do you see burn-in? Roughly when does it converge to the stationary distribution? 
 
 ```{r plotchain}
-plot(1:numsteps,samples, xlab='iteration',ylab='mu')
+plot(1:numsteps,samples, xlab='iteration',ylab='λ')
 ```
 
 Lastly, if we plot the prior, likelihood, and posterior, we can see how the likelihood alters the prior to generate the posterior. We can also compare the sampled posterior matches the analytical posterior. 
@@ -174,7 +175,7 @@ ggplot(plotdata) +
 
 - Try changing your data set to add more or fewer data points---how does that change the convergence of your chain?
 
-- Feeling ambitious and computational? Try coding up a 2-D sampler, and estimate both \(\mu\) and \(\sigma\). If you do, try ploting your chain as it moves around in your 2D parameter space, and you can even show the posterior as a contour plot and see how it's moving up and down the distribution!
+- Feeling ambitious and computational? Try coding up a 2-D sampler, e.g. using a normal distribution with a mean \(\mu\) and standard deviation \(\sigma\). If you do, try ploting your chain as it moves around in your 2D parameter space, and you can even show the posterior as a contour plot and see how it's moving up and down the distribution!
 
-- Feeling ambitious and mathy? The normal distribution is the conjugate prior for a normal likelihood---that means that for our model and prior, we should be able to derive a closed form normal posterior for \(\mu\). Derive it, and plot it with your sampled posterior. How well do they match? How does this change as you change the number of iterations you run?
+- Feeling ambitious and mathy? The gamma distribution is the conjugate prior for a Poisson likelihood---that means that for our model and prior, we should be able to derive a closed form normal posterior for \(\lambda\). Derive it, and plot it with your sampled posterior. How well do they match? How does this change as you change the number of iterations you run?
 

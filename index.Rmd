@@ -66,18 +66,27 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 - [Useful post on Wald/FIM vs. Likelihood-based confidence intervals](https://thestatsgeek.com/2014/02/08/wald-vs-likelihood-ratio-test/)
 
-- [Identifiability and uncertainty Lab]<!--(Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html) --->
+- [Identifiability and uncertainty Lab](Labs/IdentifiabilityUncertainty/IdentifiablilityUncertaintyLab.html) 
 
 <br>
 
 
 ##### 4. Intro to MCMC & Bayesian approaches
 
-- Intro to Bayesian Approaches to Parameter Estimation, MCMC <!-- - [Lecture](Lectures/BayesianEstimation.pdf) -->
+- Intro to Bayesian Approaches to Parameter Estimation, MCMC - [Lecture](Lectures/BayesianEstimation.pdf) 
 
-- [Lab - Metropolis Sampler]<!-- (Labs/MetropolisSampler/MetropolisSampler.html) -->
+- [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)
 
 - [BayesianTools Lab]<!-- (Labs/BayesianToolsLab/BayesianTools.html) -->
+
+<br>
+
+##### Journal Club (Oct 4, 2021)
+
+- This week we're discussing two recent papers by Jon Zelner's group!
+- [There are no equal opportunity infectors: Epidemiological modelers must rethink our approach to inequality in infection risk](https://arxiv.org/abs/2109.00580) (Kelly discussion lead)
+- [Accounting for Uncertainty During a Pandemic](http://www.stat.columbia.edu/~gelman/research/published/UncertaintyPandemic.pdf)
+- Reminder to add papers and sign up to lead a journal club [here](https://docs.google.com/spreadsheets/d/1-vmib4ApYCiLnRk9hxL5HltT4W-hrvrIUlfCAs9uZJ4/edit#gid=1663288766)
 
 <br>
 
