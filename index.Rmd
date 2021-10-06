@@ -77,7 +77,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 - [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)
 
-- [BayesianTools Lab]<!-- (Labs/BayesianToolsLab/BayesianTools.html) -->
+- [BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html) 
 
 <br>
 
