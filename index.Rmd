@@ -101,8 +101,11 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 - [Twitter data collection lab](Labs/DataScrapingPart1-Twitter/DataScraping-Twitter.html)
     - [Rtweet code](Labs/DataScrapingPart1-Twitter/rtweetexample.R)
     - [Webpage scraping code](https://gist.github.com/marisae/2f506e9c2f768303abf3d34c215555b1)
-    - [Tutorial](https://alexluscombe.ca/post/r-pdftools/) for reading pdfs into R using the [pdftools package](https://cran.r-project.org/web/packages/pdftools/pdftools.pdf)
+
+- Additional useful tutorials/code
+    - [Tutorial](https://alexluscombe.ca/post/r-pdftools/) for reading text from pdfs into R using the [pdftools package](https://cran.r-project.org/web/packages/pdftools/pdftools.pdf)
     - [Followup tutorial](https://alexluscombe.ca/blog/parsing-your-.pdfs-in-r/) on parsing the data with regular expressions
+    - Two tutorials on extracting table data from pdfs using the [tabulizer](https://cran.r-project.org/web/packages/tabulizer/vignettes/tabulizer.html) package: [tutorial 1](https://datascienceplus.com/extracting-tables-from-pdfs-in-r-using-the-tabulizer-package/), [tutorial 2](https://medium.com/@ketanrd.009/how-to-extract-pdf-tables-in-r-e994c0fe4e28)
     - [CronR package](https://cran.r-project.org/web/packages/cronR/cronR.pdf) for scheduling scripts (we can show some examples of this as well in class if people are interested)
 
 - An [interesting article](https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135) about the ethics of using public data and our perception of privacy
