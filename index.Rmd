@@ -78,6 +78,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 - [Lab - Metropolis Sampler](Labs/MetropolisSampler/MetropolisSampler.html)
 
 - [BayesianTools Lab](Labs/BayesianToolsLab/BayesianTools.html) 
+    - [Example code from class](Labs/BayesianToolsLab/In-class-BayesianTools.R)
 
 <br>
 
@@ -90,7 +91,34 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 5. Sampling-based approaches to global sensitivity analysis
+##### 5. Data-scraping and data-wrangling 
+(moved this up since it might be useful for making data sets we can play with for the ML and networks sections below)
+
+- Using R to pull data using API's - Twitter, Facebook, and Google Maps
+
+- Collecting and working with twitter data
+
+- [Twitter data collection lab](Labs/DataScrapingPart1-Twitter/DataScraping-Twitter.html)
+    - [Rtweet code](Labs/DataScrapingPart1-Twitter/rtweetexample.R)
+    - [Webpage scraping code](https://gist.github.com/marisae/2f506e9c2f768303abf3d34c215555b1)
+    - [Tutorial](https://alexluscombe.ca/post/r-pdftools/) for reading pdfs into R using the [pdftools package](https://cran.r-project.org/web/packages/pdftools/pdftools.pdf)
+    - [Followup tutorial](https://alexluscombe.ca/blog/parsing-your-.pdfs-in-r/) on parsing the data with regular expressions
+    - [CronR package](https://cran.r-project.org/web/packages/cronR/cronR.pdf) for scheduling scripts (we can show some examples of this as well in class if people are interested)
+
+- An [interesting article](https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135) about the ethics of using public data and our perception of privacy
+
+<br>
+
+##### Journal Club (Oct 13, 2021)
+
+- [A Bayesian Workflow for Parameter Estimation](https://arxiv.org/pdf/2011.01808.pdf) (Hannah discussion lead)
+
+- Reminder to add papers and sign up to lead a journal club [here](https://docs.google.com/spreadsheets/d/1-vmib4ApYCiLnRk9hxL5HltT4W-hrvrIUlfCAs9uZJ4/edit#gid=1663288766)
+
+<br>
+
+
+##### 6. Sampling-based approaches to global sensitivity analysis
 
 - Latin hypercube and Sobol sampling
 
@@ -100,7 +128,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 6. Reproduction number - data driven approaches to $\mathcal{R}_0$ and $\mathcal{R}_t$
+##### 7. Reproduction number - data driven approaches to $\mathcal{R}_0$ and $\mathcal{R}_t$
 
 - Quick recap: what are $\mathcal{R}_0$ and $\mathcal{R}_t$?
 
@@ -110,7 +138,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 7. Reproduction number - next generation matrix approaches
+##### 8. Reproduction number - next generation matrix approaches
 
 - The next generation matrix and thinking about the linear algebra of the next generation matrix
 
@@ -118,18 +146,6 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 8. Data-scraping and data-wrangling 
-(moved this up since it might be useful for making data sets we can play with for the ML and networks sections below)
-
-- [Twitter data collection lab](Labs/DataScrapingPart1-Twitter/DataScraping-Twitter.html)
-
-- Using R to pull data using API's - Twitter, Facebook, and Google Maps
-
-- Collecting and working with twitter data
-
-- An [interesting article](https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135) about the ethics of using public data and our perception of privacy
-
-<br>
 
 ##### 9. Basic intro to some useful algorithms/machine learning methods
 <!-- - Overall topics of interest: k-means clustering, support vector machines, singular value decomposition (possibly a little linear algebra review also?), basic neural networks -->
