@@ -123,11 +123,23 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 ##### 6. Sampling-based approaches to global sensitivity analysis
 
-- Latin hypercube and Sobol sampling
+- Latin hypercube and Sobol sampling, local and global sensitivity methods
 
-- Global sensitivity methods (maybe do as journal club with Marino et al. paper)
+- [Lecture Slides](Lectures/SensitivityandSampling.pdf)
 
-- Potentially: active subspace methods, surrogate models
+- [Example code](Lectures/SamplingScript.R)
+
+- Journal club paper: [Marino et al. "A methodology for performing global uncertainty and sensitivity analysis in systems biology." Journal of theoretical biology 254.1 (2008): 178-196.](https://www.sciencedirect.com/science/article/pii/S0022519308001896)
+
+- Potentially for later: active subspace methods, surrogate models
+
+<br>
+
+##### Journal Club (Oct 25, 2021)
+
+- Journal club paper: [Marino et al. "A methodology for performing global uncertainty and sensitivity analysis in systems biology." Journal of theoretical biology 254.1 (2008): 178-196.](https://www.sciencedirect.com/science/article/pii/S0022519308001896)
+
+- Reminder to add papers and sign up to lead a journal club [here](https://docs.google.com/spreadsheets/d/1-vmib4ApYCiLnRk9hxL5HltT4W-hrvrIUlfCAs9uZJ4/edit#gid=1663288766)
 
 <br>
 
