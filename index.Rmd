@@ -127,7 +127,9 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 - [Lecture Slides](Lectures/SensitivityandSampling.pdf)
 
-- [Example code](Lectures/SamplingScript.R)
+- [Example code](Labs/SamplingSensitivity.R)
+
+- Interesting paper on Sobol vs. LHS: [To Sobol or not to Sobol? The effects of sampling schemes in systems biology applications](https://www.sciencedirect.com/science/article/pii/S0025556421000419)
 
 - Journal club paper: [Marino et al. "A methodology for performing global uncertainty and sensitivity analysis in systems biology." Journal of theoretical biology 254.1 (2008): 178-196.](https://www.sciencedirect.com/science/article/pii/S0022519308001896)
 
@@ -135,9 +137,15 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### Journal Club (Oct 25, 2021)
+##### Journal Club (Oct 25, 2021 and Oct 27, 2021)
 
 - Journal club paper: [Marino et al. "A methodology for performing global uncertainty and sensitivity analysis in systems biology." Journal of theoretical biology 254.1 (2008): 178-196.](https://www.sciencedirect.com/science/article/pii/S0022519308001896)
+
+- Oct 27: Discuss the ABMs portion of the paper, and try out some of the methods together
+
+- This R package includes the eFAST method described in the journal club paper, plus a ton more: https://cran.r-project.org/web/packages/sensitivity/index.html
+
+- And this package computes Sobol/variance-based sensitivity analyses:https://cran.r-project.org/web/packages/sensobol/vignettes/sensobol.pdf
 
 - Reminder to add papers and sign up to lead a journal club [here](https://docs.google.com/spreadsheets/d/1-vmib4ApYCiLnRk9hxL5HltT4W-hrvrIUlfCAs9uZJ4/edit#gid=1663288766)
 
