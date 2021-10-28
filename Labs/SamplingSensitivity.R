@@ -62,6 +62,8 @@ plot(paramsample.scaled[,1], peakprev)
 plot(paramsample.scaled[,2], peakprev)
 
 
+#3D plot/heat map
+
 # Non-interactive version
 # scatterplot3d(paramsample.scaled[,1],paramsample.scaled[,2],peakprev, pch = 16, color="steelblue",type="h",grid=TRUE, box=TRUE, angle=150)
 
@@ -175,7 +177,10 @@ plot = plot_ly(plotdata, x = ~beta, y = ~gamma, z = ~output, marker = list(color
 # plot = plot_ly(plotdata, x = ~beta, y = ~k, z = ~output, marker = list(color = ~output, colorscale = c('#FFE1A1', '#683531'), showscale = TRUE)) %>% 
 #   add_markers() 
 
-# Just to illustrate the parameters themselves are randomly sampled, plus it shows the 3d interactions
+plot
+
+# Just to illustrate the parameter sampling, plus it shows the 3d interactions
+# also illustrates that mu is more weakly correlated
 plot = plot_ly(plotdata, x = ~beta, y = ~gamma, z = ~mu, marker = list(color = ~output, colorscale = c('#FFE1A1', '#683531'), showscale = TRUE)) %>% 
   add_markers() 
 
