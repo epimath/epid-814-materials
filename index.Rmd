@@ -151,31 +151,13 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 7. Reproduction number - data driven approaches to $\mathcal{R}_0$ and $\mathcal{R}_t$
 
-- Quick recap: what are $\mathcal{R}_0$ and $\mathcal{R}_t$?
-
-- Serial interval approaches to calculating $\mathcal{R}_t$
-
-- Possible journal club with Royal Society review paper
-
-<br>
-
-##### 8. Reproduction number - next generation matrix approaches
-
-- The next generation matrix and thinking about the linear algebra of the next generation matrix
-
-- Maybe: type and target reproduction numbers, stochastic $\mathcal{R}_0$, $\mathcal{R}_0$ for networks
-
-<br>
-
-
-##### 9. Basic intro to some useful algorithms/machine learning methods
+##### 7. Basic intro to some useful algorithms/machine learning methods
 <!-- - Overall topics of interest: k-means clustering, support vector machines, singular value decomposition (possibly a little linear algebra review also?), basic neural networks -->
-- [Clustering Methods Lecture]<!--(Lectures/Clustering.pdf)-->
-    <!-- - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm) -->
-    <!-- - [Another overview of DBSCAN and some of its variants](https://cran.r-project.org/web/packages/dbscan/vignettes/dbscan.pdf) -->
-- [Clustering Lab]<!--(Labs/clustering.R)-->
+- [Clustering Methods Lecture](Lectures/Clustering.pdf)
+    - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm)
+    - [Another overview of DBSCAN and some of its variants](https://cran.r-project.org/web/packages/dbscan/vignettes/dbscan.pdf)
+- [Clustering Lab](Labs/clustering.R)
     - Other useful tutorials:
         - [Cluster analysis in R](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
         - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
@@ -187,6 +169,25 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
         - [Naive Bayes with Titanic survivorship](https://www.r-bloggers.com/understanding-naive-bayes-classifier-using-r/)
         - [Naive Bayes Overview](https://uc-r.github.io/naive_bayes) - includes more details on cross validation, confusion matrices, Laplace smoother, etc.
 
+
+<br>
+
+
+##### 8. Reproduction number - data driven approaches to $\mathcal{R}_0$ and $\mathcal{R}_t$
+
+- Quick recap: what are $\mathcal{R}_0$ and $\mathcal{R}_t$?
+
+- Serial interval approaches to calculating $\mathcal{R}_t$
+
+- Possible journal club with Royal Society review paper
+
+<br>
+
+##### 9. Reproduction number - next generation matrix approaches
+
+- The next generation matrix and thinking about the linear algebra of the next generation matrix
+
+- Maybe: type and target reproduction numbers, stochastic $\mathcal{R}_0$, $\mathcal{R}_0$ for networks
 
 <br>
 
