@@ -161,6 +161,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
     - Other useful tutorials:
         - [Cluster analysis in R](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
         - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
+- [Brainstorming twitter data collection ideas](https://docs.google.com/document/d/1V9q25Xtmm4_SryTeR5xgHX3cVmR3_O7R0y93wYxe_Q4/edit)
 - [Classification]<!-- (Lectures/Classification.pdf) -->
 - [Lab: Naive Bayes classification with twitter data]<!-- (Labs/ClassifierLab/TwitterNaiveBayes.html)-->
     <!-- - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata) -->
