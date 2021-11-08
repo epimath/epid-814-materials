@@ -16,7 +16,7 @@ library(nhanesA) # for loading NHANES data
 
 data("moons") # useful one from DBSCAN
 plot(moons)
-data("DS3") # also nice one from DBSCAN, a bit reminiscent of some of Jiale's examples
+data("DS3") # also nice one from DBSCAN
 plot(DS3)
 data(ruspini)
 plot(ruspini)
@@ -49,13 +49,17 @@ ggplot(MICovid.data) +
 plot_ly(MICovid.data, x = ~`COVID-19 Patients`, y = ~`COVID-19 Patients in ICU`, z = ~`Bed Occupancy %`, marker = list(color = ~`Bed Occupancy %`, colorscale = c('#FFE1A1', '#683531'), showscale = TRUE)) %>% 
   add_markers() 
 
+
+
 ### NHANES Data ###
 
 ## Decide data to explore
 
+# explore a category: 
+# Demographics (DEMO) - Dietary (DIET) - Examination (EXAM) - Laboratory (LAB) - Questionnaire (Q)
 
 ## Lab data sets 
-nhanesTables('LAB', 2017) # explore a category: Demographics (DEMO) - Dietary (DIET) - Examination (EXAM) - Laboratory (LAB) - Questionnaire (Q)
+nhanesTables('Q', 2017) 
 nhanesTableVars('LAB', 'PFAS_J')# pull variables list from one of the categories
 
 ## Perfluoroalkyl and Polyfluoroalkyl Substances 2017 NHANES
@@ -63,7 +67,7 @@ nhanesdata = nhanes('PFAS_J')
 # remove comment codes and subsample weight columns
 nhanesdata = select(nhanesdata, -WTSB2YR, -LBDPFDEL, -LBDPFHSL, -LBDMPAHL, -LBDPFNAL, -LBDPFUAL, -LBDNFOAL, -LBDBFOAL, -LBDNFOSL, -LBDMFOSL) 
 
-plot_ly(nhanesdata, x = ~`LBXPFDE`, y = ~`LBXPFHS`, z = ~`LBXMPAH`, marker = list(color = ~`LBXPFNA`, colorscale = c('#FFE1A1', '#683531'), showscale = TRUE)) %>% 
+plot_ly(nhanesdata, x = ~`LBXPFDE`, y = ~`LBXPFNA`, z = ~`LBXMPAH`, marker = list(color = ~`LBXPFHS`, colorscale = c('#FFE1A1', '#683531'), showscale = TRUE)) %>% 
   add_markers() 
 
 
@@ -108,17 +112,21 @@ nhanesdata = select(nhanesdata, -SEQN) # drop respondent ID column
 #### Clustering! ####
 #####################
 
-data = nhanesdata
+# data = DS3
 # data = MICovid.data[,2:4] # trim off hospital names
+# nhanesdata = select(nhanesdata, -`LBXBFOA`)
+data = nhanesdata
 
 
 # K-Means
+set.seed(7)
 numclust = 4
 kmeansres = kmeans(x = data, centers = numclust)
 
 kmeansres$centers # center locartions
 kmeansres$size #cluster sizes
 kmeansres$withinss #within cluster sum of squares 
+kmeansres$cluster # cluster membership vector
 
 clusplot(data, kmeansres$cluster, main='Cluster Visualization',
          color=TRUE, shade=TRUE, labels=numclust, lines=0)
@@ -146,7 +154,7 @@ pairs(data, col = hierres4, lower.panel = NULL, cex.labels=1, pch=19, cex = 0.5)
 
 
 # DBSCAN
-dbscanres = dbscan(data, eps = 0.5, minPts = 3) # minpoints often set to dim + 1
+dbscanres = dbscan(data, eps = 5, minPts = 3) # minpoints often set to dim + 1
 dbscanres
 
 clusplot(data, dbscanres$cluster, main='Cluster Visualization',
