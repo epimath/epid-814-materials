@@ -152,7 +152,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 <br>
 
 
-##### 7. Basic intro to some useful algorithms/machine learning methods
+##### 7. Basic intro to some useful algorithms/machine learning methods - Clustering
 <!-- - Overall topics of interest: k-means clustering, support vector machines, singular value decomposition (possibly a little linear algebra review also?), basic neural networks -->
 - [Clustering Methods Lecture](Lectures/Clustering.pdf)
     - Density-sensitive version of DBSCAN: [OPTICS](https://en.wikipedia.org/wiki/OPTICS_algorithm)
@@ -162,19 +162,24 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
         - [Cluster analysis in R](https://rstudio-pubs-static.s3.amazonaws.com/33876_1d7794d9a86647ca90c4f182df93f0e8.html)
         - [Clustering in R Overview](https://www.datanovia.com/en/blog/types-of-clustering-methods-overview-and-quick-start-r-code/)
 - [Brainstorming twitter data collection ideas](https://docs.google.com/document/d/1V9q25Xtmm4_SryTeR5xgHX3cVmR3_O7R0y93wYxe_Q4/edit)
-- [Classification]<!-- (Lectures/Classification.pdf) -->
-- [Lab: Naive Bayes classification with twitter data]<!-- (Labs/ClassifierLab/TwitterNaiveBayes.html)-->
-    <!-- - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata) -->
-    - Other useful tutorials on Naive Bayes
-        - [Naive Bayes in R for movie reviews](https://rpubs.com/cen0te/naivebayes-sentimentpolarity)
-        - [Naive Bayes with Titanic survivorship](https://www.r-bloggers.com/understanding-naive-bayes-classifier-using-r/)
-        - [Naive Bayes Overview](https://uc-r.github.io/naive_bayes) - includes more details on cross validation, confusion matrices, Laplace smoother, etc.
-
 
 <br>
 
 
-##### 8. Reproduction number - data driven approaches to $\mathcal{R}_0$ and $\mathcal{R}_t$
+##### 8. Reproduction number - next generation matrix approaches
+
+- The next generation matrix and thinking about the linear algebra of the next generation matrix
+
+- Maybe: type and target reproduction numbers, stochastic $\mathcal{R}_0$, $\mathcal{R}_0$ for networks
+
+- Guest lecture by Andrew Brouwer
+    - [Slides](Lectures/AndrewGuestLectureR0/BrouwerR0Lecture.pdf)
+    - [Exercises](Lectures/AndrewGuestLectureR0/Exercises.pdf)
+
+<br>
+
+
+##### 9. Reproduction number - data driven approaches to $\mathcal{R}_0$ and $\mathcal{R}_t$
 
 - Quick recap: what are $\mathcal{R}_0$ and $\mathcal{R}_t$?
 
@@ -184,20 +189,23 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 9. Reproduction number - next generation matrix approaches
 
-- The next generation matrix and thinking about the linear algebra of the next generation matrix
-
-- Maybe: type and target reproduction numbers, stochastic $\mathcal{R}_0$, $\mathcal{R}_0$ for networks
+##### 10. Basic intro to some useful algorithms/machine learning methods - Classification
+- [Classification]<!-- (Lectures/Classification.pdf) -->
+- [Lab: Naive Bayes classification with twitter data]<!-- (Labs/ClassifierLab/TwitterNaiveBayes.html)-->
+    <!-- - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata) -->
+    - Other useful tutorials on Naive Bayes
+        - [Naive Bayes in R for movie reviews](https://rpubs.com/cen0te/naivebayes-sentimentpolarity)
+        - [Naive Bayes with Titanic survivorship](https://www.r-bloggers.com/understanding-naive-bayes-classifier-using-r/)
+        - [Naive Bayes Overview](https://uc-r.github.io/naive_bayes) - includes more details on cross validation, confusion matrices, Laplace smoother, etc.
 
 <br>
 
-
-##### 10. Time series analysis intro
+##### 11. Time series analysis intro
 
 <br>
 
-##### 11. Visualization with ggplot2
+##### 12. Visualization with ggplot2
 
 - Intro to ggplot and collection of examples <!-- : [Lab - our collection of ggplot examples](Labs/ggplotExamples/BasicExamples.html), [Dataset](Labs/ggplotExamples/Datasets/YemenCholeraOutbreak.csv) -->
 
@@ -213,7 +221,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 12. Other topics to cover if time!
+##### 13. Other topics to cover if time!
 
 - Parallelizing code in R (maybe combine with another topic since we can do an example fairly quickly)
 
