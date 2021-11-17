@@ -187,6 +187,12 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 - Possible journal club with Royal Society review paper
 
+- [Slides](Lectures/DataDrivenR0Rt.pdf)
+
+- [Rt examples with Michigan COVID data](Labs/DataDrivenR0Rt/Rtexamples.R)
+
+- [Rt examples with simulated data](Labs/DataDrivenR0Rt/Rtexamples2.R)
+
 <br>
 
 
