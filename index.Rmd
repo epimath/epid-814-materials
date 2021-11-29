@@ -196,7 +196,16 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 <br>
 
 
-##### 10. Basic intro to some useful algorithms/machine learning methods - Classification
+##### 10. Parallelization in R and Python 
+- [Slides](Labs/Parallelization/ParallelComputing.html)
+
+- [Code for R](Labs/Parallelization/ClassExampleParallelCode.R)
+
+- [Code for Python](https://replit.com/@EisenbergUM/ParallelizationExample#main.py)
+
+<br>
+
+##### 11. Basic intro to some useful algorithms/machine learning methods - Classification
 - [Classification]<!-- (Lectures/Classification.pdf) -->
 - [Lab: Naive Bayes classification with twitter data]<!-- (Labs/ClassifierLab/TwitterNaiveBayes.html)-->
     <!-- - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata) -->
@@ -207,11 +216,11 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 11. Time series analysis intro
+##### 12. Time series analysis intro
 
 <br>
 
-##### 12. Visualization with ggplot2
+##### 13. Visualization with ggplot2
 
 - Intro to ggplot and collection of examples <!-- : [Lab - our collection of ggplot examples](Labs/ggplotExamples/BasicExamples.html), [Dataset](Labs/ggplotExamples/Datasets/YemenCholeraOutbreak.csv) -->
 
@@ -227,7 +236,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 
 <br>
 
-##### 13. Other topics to cover if time!
+##### 14. Other topics to cover if time!
 
 - Parallelizing code in R (maybe combine with another topic since we can do an example fairly quickly)
 
