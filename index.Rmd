@@ -206,7 +206,7 @@ To be added after the initial topic discussion on Monday. Topics are subject to 
 <br>
 
 ##### 11. Basic intro to some useful algorithms/machine learning methods - Classification
-- [Classification]<!-- (Lectures/Classification.pdf) -->
+- [Classification](Lectures/Classification.pdf) 
 - [Lab: Naive Bayes classification with twitter data]<!-- (Labs/ClassifierLab/TwitterNaiveBayes.html)-->
     <!-- - Twitter topic datasets: [Aliens](Labs/ClassifierLab/AliensTwitterData.Rdata), [Vaccines](Labs/ClassifierLab/vaccines.Rdata), [Vaccines 2](Labs/ClassifierLab/vaccines171119.Rdata) -->
     - Other useful tutorials on Naive Bayes
